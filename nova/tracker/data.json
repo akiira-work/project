@@ -31,5 +31,21 @@
     { "test": "End-to-end ingestion per format", "validates": "One real source each for Google Doc, Sheet, Canva, CSV, image, text runs through the pipeline without manual fixes", "status": "todo" },
     { "test": "Categorization accuracy", "validates": "Rule-matched and AI-fallback categorizations are correct on a sample of 10 sources", "status": "todo" },
     { "test": "Dedupe / update-in-place", "validates": "Re-submitting the same source updates the existing note instead of duplicating it", "status": "todo" }
-  ]
+  ],
+  "integrations": [
+    { "name": "Google Drive", "role": "Source — Docs and Sheets are read directly for extraction", "kind": "Source", "status": "connected" },
+    { "name": "Canva", "role": "Source — slide decks and designs, text extraction depth still unverified (D-008)", "kind": "Source", "status": "connected" },
+    { "name": "Obsidian", "role": "Destination — the vault N.O.V.A. writes structured notes into, queried via Bases/Dataview", "kind": "Destination", "status": "connected" },
+    { "name": "Claude / Cowork", "role": "The extraction, summarization, and categorization engine that runs the pipeline", "kind": "Intelligence", "status": "connected" },
+    { "name": "n8n", "role": "Proposed for automating the Inbox trigger — exact workflow not yet defined (D-010, open)", "kind": "Automation", "status": "planned" }
+  ],
+  "impact": {
+    "note": "These are targets this design is aiming for, not measurements — nothing has been built or tested yet. See Test Status below; validating these is part of the Phase 1 build gate.",
+    "items": [
+      { "before": "Hunting across Drive, Canva, and chat threads for one project's facts", "after": "One searchable vault, filtered by project" },
+      { "before": "Institutional knowledge lost when campaigns wrap or people rotate off", "after": "Source material preserved as structured, permanent notes" },
+      { "before": "Compiling a project's key facts for planning or handoff takes hours", "after": "Target: minutes, once the schema and pipeline are validated" },
+      { "before": "Northstar's strategy layer works from scattered, stale source material", "after": "Northstar reads clean, structured, current notes" }
+    ]
+  }
 }
