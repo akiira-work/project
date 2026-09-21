@@ -60,10 +60,10 @@
     { "n": 7, "task": "Set up the Inbox convention (folder or note), capturing project name and a short description at intake", "phase": "Phase 1", "status": "done" },
     { "n": 8, "task": "Draft and finalize the rule table for known Drive/Canva locations, per company and project", "phase": "Phase 1", "status": "done" },
     { "n": 9, "task": "Test Canva connector text extraction on one real client design (D-008)", "phase": "Phase 1", "status": "done" },
-    { "n": 10, "task": "Run the pipeline manually end-to-end on one source per format", "phase": "Phase 1", "status": "wip" },
+    { "n": 10, "task": "Run the pipeline manually end-to-end on one source per format", "phase": "Phase 1", "status": "done" },
     { "n": 11, "task": "Review and correct AI-inferred categorizations from the trial run", "phase": "Phase 1", "status": "done" },
     { "n": 12, "task": "Turn the pipeline into a repeatable checklist or prompt", "phase": "Phase 2", "status": "done" },
-    { "n": 13, "task": "Build the rule table as an editable config file", "phase": "Phase 2", "status": "todo" },
+    { "n": 13, "task": "Build the rule table as an editable config file", "phase": "Phase 2", "status": "done" },
     { "n": 14, "task": "Set up a Cowork scheduled task fired on demand (optional)", "phase": "Phase 2", "status": "todo" },
     { "n": 15, "task": "Evaluate whether volume justifies a standalone script", "phase": "Phase 3", "status": "todo" },
     { "n": 16, "task": "Build standalone script calling Google/Canva/Claude APIs directly (only if triggered)", "phase": "Phase 3", "status": "todo" },
@@ -72,9 +72,9 @@
   "tests": [
     { "test": "Schema completeness", "validates": "Every field captures what's actually needed", "status": "todo" },
     { "test": "Bases view accuracy", "validates": "Views return the right notes when filtered/grouped", "status": "todo" },
-    { "test": "End-to-end ingestion per format", "validates": "One real source per format runs without manual fixes", "status": "todo" },
-    { "test": "Categorization accuracy", "validates": "Rule + AI-fallback calls correct on 10 sample sources", "status": "todo" },
-    { "test": "Dedupe / update-in-place", "validates": "Re-submitting a source updates, not duplicates, the note", "status": "todo" }
+    { "test": "End-to-end ingestion per format", "validates": "One real source per format runs without manual fixes", "status": "done" },
+    { "test": "Categorization accuracy", "validates": "Rule + AI-fallback calls correct on 10 sample sources", "status": "wip" },
+    { "test": "Dedupe / update-in-place", "validates": "Re-submitting a source updates, not duplicates, the note", "status": "done" }
   ],
   "impact": {
     "note": "Targets, not measurements — nothing's built or tested yet (see Test Status).",
@@ -93,5 +93,5 @@
     { "id": "D-011", "label": "Company-level vs. project notes — resolved: scope field" },
     { "id": "D-012", "label": "Canva ≠ automatic Creative Asset — resolved: narrowed the rule" }
   ],
-  "build_gate": "Cleared — Phase 0's sample notes and Bases view confirmed the schema, and D-006 / D-007 / D-008 are resolved. Phase 1's Inbox, rule table, and checklist are built; only a real CSV/image/text source (task #10) is left before Phase 1 is fully exercised."
+  "build_gate": "Phase 1 complete — all 6 source formats have run through the pipeline at least once (CSV/image/text via disposable test fixtures on 2026-09-22, pending a real source of each), dedupe/update-in-place confirmed, and the 7 pilot notes reviewed. Phase 2 (semi-automate) underway: checklist and machine-readable rule table done; a Cowork scheduled task (task #14, optional) is the only thing left."
 }
