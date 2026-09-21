@@ -1,17 +1,41 @@
 {
   "updated": "2026-09-21T00:00:00Z",
-  "stats": [
-    { "n": 16, "l": "Tasks" },
-    { "n": 1, "l": "Done" },
-    { "n": 1, "l": "In progress" },
-    { "n": 14, "l": "Not started" },
-    { "n": "0/5", "l": "Tests run" }
-  ],
   "phases": [
-    { "key": "Phase 0", "label": "Phase 0", "blurb": "Prove the note schema by hand, on a few pilot projects" },
-    { "key": "Phase 1", "label": "Phase 1", "blurb": "Run the pipeline manually, end to end, once per format" },
-    { "key": "Phase 2", "label": "Phase 2", "blurb": "Turn it into a repeatable, semi-automated process" },
-    { "key": "Phase 3", "label": "Phase 3", "blurb": "Standalone script — only if volume justifies it" }
+    { "key": "Phase 0", "label": "Phase 0", "blurb": "Prove the schema by hand" },
+    { "key": "Phase 1", "label": "Phase 1", "blurb": "Run it manually, end to end" },
+    { "key": "Phase 2", "label": "Phase 2", "blurb": "Make it repeatable" },
+    { "key": "Phase 3", "label": "Phase 3", "blurb": "Automate, if justified" }
+  ],
+  "objectives": [
+    { "label": "Find anything fast", "sub": "One place per project, not five tabs" },
+    { "label": "Knowledge stays put", "sub": "Survives project wrap-ups and handoffs" },
+    { "label": "Hours → minutes", "sub": "Compiling facts for planning (target)" },
+    { "label": "Feeds Northstar", "sub": "Clean input for the strategy layer" }
+  ],
+  "features": [
+    "Multi-format intake: Docs, Sheets, Canva, CSV, images, text",
+    "Auto key-fact extraction & summary",
+    "Rules first, AI fallback for categorization",
+    "No separate database — just the vault",
+    "Dedupe: update in place, not duplicate",
+    "Needs-Review queue for AI calls",
+    "One vault, many companies & projects"
+  ],
+  "quickstart": {
+    "steps": [
+      { "n": 1, "label": "Drop", "sub": "Paste a link or file into the Inbox" },
+      { "n": 2, "label": "Process", "sub": "Ask Claude to run the Inbox" },
+      { "n": 3, "label": "Find it", "sub": "Open the project's view in Obsidian" }
+    ],
+    "example_input": "Google Doc link pasted into Inbox: “Client X — Q1 Campaign Brief”",
+    "example_output": "Note filed: company Client X · project Q1 Campaign · category Campaign Brief · 3 key facts"
+  },
+  "integrations": [
+    { "name": "Google Drive", "role": "Docs & Sheets, read directly", "kind": "Source", "status": "connected" },
+    { "name": "Canva", "role": "Slide decks & designs (extraction unverified)", "kind": "Source", "status": "connected" },
+    { "name": "Obsidian", "role": "The one vault for everything", "kind": "Destination", "status": "connected" },
+    { "name": "Claude / Cowork", "role": "Extraction, summary, categorization", "kind": "Intelligence", "status": "connected" },
+    { "name": "n8n", "role": "Inbox automation — role undefined (D-010)", "kind": "Automation", "status": "planned" }
   ],
   "tasks": [
     { "n": 1, "task": "Confirm and connect the vault folder", "phase": "Phase 0", "status": "done" },
@@ -21,7 +45,7 @@
     { "n": 5, "task": "Decide what counts as \"key information\" for an image (D-006)", "phase": "Phase 0", "status": "todo" },
     { "n": 6, "task": "Decide note lifecycle / archiving policy (D-007)", "phase": "Phase 0", "status": "todo" },
     { "n": 7, "task": "Set up the Inbox convention (folder or note)", "phase": "Phase 1", "status": "todo" },
-    { "n": 8, "task": "Draft and finalize the rule table for known Drive/Canva locations, per project and client", "phase": "Phase 1", "status": "wip" },
+    { "n": 8, "task": "Draft and finalize the rule table for known Drive/Canva locations, per company and project", "phase": "Phase 1", "status": "wip" },
     { "n": 9, "task": "Test Canva connector text extraction on one real client design (D-008)", "phase": "Phase 1", "status": "todo" },
     { "n": 10, "task": "Run the pipeline manually end-to-end on one source per format", "phase": "Phase 1", "status": "todo" },
     { "n": 11, "task": "Review and correct AI-inferred categorizations from the trial run", "phase": "Phase 1", "status": "todo" },
@@ -32,26 +56,26 @@
     { "n": 16, "task": "Build standalone script calling Google/Canva/Claude APIs directly (only if triggered)", "phase": "Phase 3", "status": "todo" }
   ],
   "tests": [
-    { "test": "Schema completeness", "validates": "Every field in the note schema captures what's actually needed", "status": "todo" },
-    { "test": "Bases view accuracy", "validates": "The vault views return the right notes when filtered/grouped by project or client", "status": "todo" },
-    { "test": "End-to-end ingestion per format", "validates": "One real source each for Google Doc, Sheet, Canva, CSV, image, text runs through the pipeline without manual fixes", "status": "todo" },
-    { "test": "Categorization accuracy", "validates": "Rule-matched and AI-fallback categorizations are correct on a sample of 10 sources across different projects", "status": "todo" },
-    { "test": "Dedupe / update-in-place", "validates": "Re-submitting the same source updates the existing note instead of duplicating it", "status": "todo" }
-  ],
-  "integrations": [
-    { "name": "Google Drive", "role": "Source — Docs and Sheets are read directly for extraction, across any project's Drive", "kind": "Source", "status": "connected" },
-    { "name": "Canva", "role": "Source — slide decks and designs, text extraction depth still unverified (D-008)", "kind": "Source", "status": "connected" },
-    { "name": "Obsidian", "role": "Destination — the single vault every project and client writes into, queried via Bases/Dataview", "kind": "Destination", "status": "connected" },
-    { "name": "Claude / Cowork", "role": "The extraction, summarization, and categorization engine that runs the pipeline", "kind": "Intelligence", "status": "connected" },
-    { "name": "n8n", "role": "Proposed for automating the Inbox trigger — exact workflow not yet defined (D-010, open)", "kind": "Automation", "status": "planned" }
+    { "test": "Schema completeness", "validates": "Every field captures what's actually needed", "status": "todo" },
+    { "test": "Bases view accuracy", "validates": "Views return the right notes when filtered/grouped", "status": "todo" },
+    { "test": "End-to-end ingestion per format", "validates": "One real source per format runs without manual fixes", "status": "todo" },
+    { "test": "Categorization accuracy", "validates": "Rule + AI-fallback calls correct on 10 sample sources", "status": "todo" },
+    { "test": "Dedupe / update-in-place", "validates": "Re-submitting a source updates, not duplicates, the note", "status": "todo" }
   ],
   "impact": {
-    "note": "These are targets this design is aiming for, not measurements — nothing has been built or tested yet. See Test Status below; validating these is part of the Phase 1 build gate.",
+    "note": "Targets, not measurements — nothing's built or tested yet (see Test Status).",
     "items": [
-      { "before": "Hunting across Drive, Canva, and chat threads for one project's facts, repeated for every new project or client", "after": "One searchable vault, filtered by project or client" },
-      { "before": "Institutional knowledge lost when a project wraps, a client relationship ends, or people rotate off", "after": "Source material preserved as structured, permanent notes, no matter how many projects stack up" },
-      { "before": "Compiling a project's key facts for planning or handoff takes hours — and multiplies with every new client", "after": "Target: minutes per project, once the schema and pipeline are validated" },
-      { "before": "Northstar's strategy layer works from scattered, stale source material", "after": "Northstar reads clean, structured, current notes from every project at once" }
+      { "before": "Hunting across tools, every project", "after": "One searchable vault" },
+      { "before": "Knowledge lost when a project wraps", "after": "Preserved as permanent notes" },
+      { "before": "Compiling facts takes hours", "after": "Target: minutes" },
+      { "before": "Northstar reads scattered, stale material", "after": "Northstar reads clean, current notes" }
     ]
-  }
+  },
+  "decisions": [
+    { "id": "D-006", "label": "What counts as “key info” for an image" },
+    { "id": "D-007", "label": "Note lifecycle / archiving policy" },
+    { "id": "D-008", "label": "Canva text-extraction reliability" },
+    { "id": "D-010", "label": "n8n's role, if any" }
+  ],
+  "build_gate": "Phase 1 starts once Phase 0's sample notes confirm the schema, and D-006 / D-007 are resolved."
 }

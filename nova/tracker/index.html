@@ -53,229 +53,242 @@
   body {
     margin: 0; background: var(--page-bg); color: var(--ink);
     font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    line-height: 1.55;
+    line-height: 1.5;
   }
-  main { max-width: 960px; margin: 0 auto; padding: 0 20px 80px; }
+  main { max-width: 980px; margin: 0 auto; padding: 0 20px 64px; }
 
   /* ---- hero ---- */
   .hero {
-    position: relative;
-    margin: 0 -20px 8px;
-    padding: 56px 20px 40px;
-    overflow: hidden;
+    position: relative; margin: 0 -20px 6px; padding: 40px 20px 28px; overflow: hidden;
     background:
-      radial-gradient(560px 280px at 15% -10%, color-mix(in srgb, var(--brand-orange) 30%, transparent), transparent 70%),
-      radial-gradient(480px 320px at 85% 0%, color-mix(in srgb, var(--brand-violet) 32%, transparent), transparent 70%);
+      radial-gradient(560px 260px at 15% -10%, color-mix(in srgb, var(--brand-orange) 28%, transparent), transparent 70%),
+      radial-gradient(480px 300px at 85% 0%, color-mix(in srgb, var(--brand-violet) 30%, transparent), transparent 70%);
   }
   .hero h1 {
-    font-size: 2.4rem; margin: 0 0 6px; letter-spacing: -0.01em; font-weight: 700;
+    font-size: 2.1rem; margin: 0 0 4px; letter-spacing: -0.01em; font-weight: 700;
     background: linear-gradient(90deg, var(--brand-violet), var(--brand-magenta) 55%, var(--brand-orange));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-    display: inline-block;
+    -webkit-background-clip: text; background-clip: text; color: transparent; display: inline-block;
   }
-  .hero .tagline { color: var(--ink-2); margin: 0 0 14px; font-size: 1.02rem; }
+  .hero .tagline { color: var(--ink-2); margin: 0 0 10px; font-size: 0.92rem; }
   #live-status {
-    font-size: 0.82rem; color: var(--ink-2); margin: 0 0 22px;
+    font-size: 0.78rem; color: var(--ink-2);
     display: inline-flex; align-items: center; gap: 6px;
     background: var(--surface); border: 1px solid var(--border); border-radius: 999px;
-    padding: 5px 12px; box-shadow: var(--shadow);
+    padding: 4px 11px; box-shadow: var(--shadow);
   }
-  #live-status .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--good); box-shadow: 0 0 0 3px color-mix(in srgb, var(--good) 25%, transparent); }
-  .acronym { font-size: 0.94rem; color: var(--ink-2); max-width: 66ch; }
-  .acronym b { color: var(--ink); }
+  #live-status .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--good); box-shadow: 0 0 0 3px color-mix(in srgb, var(--good) 25%, transparent); }
 
-  section { margin: 44px 0; }
-  h2 { font-size: 1.15rem; border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 16px; letter-spacing: -0.01em; }
-  h2 .n { color: var(--ink-muted); font-weight: 500; }
+  section { margin: 32px 0; }
+  h2 { font-size: 1.02rem; font-weight: 700; margin: 0 0 12px; letter-spacing: -0.005em; }
+  .section-sub { font-size: 0.78rem; color: var(--ink-muted); margin: -8px 0 12px; }
 
-  /* ---- progress ---- */
-  .progress-card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
-    padding: 20px 22px; box-shadow: var(--shadow); margin-bottom: 8px;
-  }
-  .progress-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; gap: 12px; flex-wrap: wrap; }
-  .progress-top .label { font-weight: 600; font-size: 0.95rem; }
-  .progress-top .pct { font-size: 1.5rem; font-weight: 700; color: var(--brand-orange); font-variant-numeric: tabular-nums; }
-  .progress-track { height: 10px; border-radius: 999px; background: var(--line); overflow: hidden; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow); }
+
+  /* ---- top grid: progress + donut ---- */
+  .top-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 12px; }
+  @media (max-width: 640px) { .top-grid { grid-template-columns: 1fr; } }
+  .progress-card { padding: 16px 18px; }
+  .progress-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; gap: 10px; }
+  .progress-top .label { font-weight: 600; font-size: 0.86rem; }
+  .progress-top .pct { font-size: 1.3rem; font-weight: 700; color: var(--brand-orange); font-variant-numeric: tabular-nums; }
+  .progress-track { height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; }
   .progress-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--brand-violet), var(--brand-orange)); transition: width 0.4s ease; }
-  .progress-note { font-size: 0.82rem; color: var(--ink-muted); margin-top: 10px; }
+  .progress-mini { display: flex; gap: 16px; margin-top: 12px; }
+  .progress-mini .m .n { font-size: 1.1rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .progress-mini .m .l { font-size: 0.68rem; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.03em; }
 
-  .stats { display: flex; gap: 12px; flex-wrap: wrap; }
-  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; min-width: 108px; box-shadow: var(--shadow); }
-  .stat .n { font-size: 1.6rem; font-weight: 700; font-variant-numeric: tabular-nums; }
-  .stat .l { font-size: 0.78rem; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  .donut-card { padding: 16px 18px; display: flex; align-items: center; gap: 14px; }
+  .donut-card svg { flex: none; }
+  .donut-legend { display: flex; flex-direction: column; gap: 5px; font-size: 0.8rem; }
+  .donut-legend .row { display: flex; align-items: center; gap: 6px; }
+  .donut-legend .sw { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+  .donut-legend .lbl { color: var(--ink-2); }
+  .donut-legend .cnt { font-weight: 700; margin-left: auto; font-variant-numeric: tabular-nums; }
 
-  ul.plain { padding-left: 1.2em; margin: 0; }
-  ul.plain li { margin: 5px 0; }
+  /* ---- objectives: numbered tiles ---- */
+  .obj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
+  .obj-tile { padding: 12px 14px; display: flex; gap: 10px; align-items: flex-start; }
+  .obj-num {
+    width: 22px; height: 22px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center;
+    font-size: 0.68rem; font-weight: 700; color: #fff;
+    background: linear-gradient(135deg, var(--brand-violet), var(--brand-orange));
+  }
+  .obj-label { font-weight: 600; font-size: 0.86rem; }
+  .obj-sub { font-size: 0.75rem; color: var(--ink-muted); margin-top: 1px; }
 
-  table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; font-size: 0.92rem; box-shadow: var(--shadow); }
-  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { background: var(--surface-2); color: var(--ink); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em; }
+  /* ---- feature chips ---- */
+  .chip-row { display: flex; flex-wrap: wrap; gap: 7px; }
+  .chip {
+    font-size: 0.78rem; color: var(--ink-2); background: var(--surface); border: 1px solid var(--border);
+    border-radius: 999px; padding: 5px 12px; box-shadow: var(--shadow);
+  }
+
+  /* ---- quickstart ---- */
+  .qs-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 10px; }
+  @media (max-width: 560px) { .qs-steps { grid-template-columns: 1fr; } }
+  .qs-step { padding: 12px 14px; display: flex; gap: 10px; align-items: flex-start; }
+  .qs-num {
+    width: 22px; height: 22px; border-radius: 7px; flex: none; display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--brand-violet), var(--brand-orange));
+  }
+  .qs-label { font-weight: 600; font-size: 0.84rem; }
+  .qs-sub { font-size: 0.74rem; color: var(--ink-muted); margin-top: 1px; }
+  .example-card { padding: 12px 16px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: center; }
+  @media (max-width: 560px) { .example-card { grid-template-columns: 1fr; } }
+  .example-tag { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--brand-orange); margin-bottom: 3px; }
+  .example-io { font-size: 0.8rem; color: var(--ink-2); }
+  .example-arrow { color: var(--brand-orange); font-size: 1rem; text-align: center; }
+  code.k { background: var(--surface-2); border-radius: 4px; padding: 1px 5px; font-size: 0.76em; color: var(--ink); }
+
+  table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; font-size: 0.86rem; box-shadow: var(--shadow); }
+  th, td { text-align: left; padding: 8px 11px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { background: var(--surface-2); color: var(--ink); font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.03em; }
   tr:last-child td { border-bottom: none; }
 
-  .badge { display: inline-flex; align-items: center; gap: 5px; padding: 2px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 600; white-space: nowrap; }
+  .badge { display: inline-flex; align-items: center; gap: 5px; padding: 2px 9px; border-radius: 999px; font-size: 0.74rem; font-weight: 600; white-space: nowrap; }
   .badge.done { color: var(--good); background: var(--good-bg); }
-  .badge.wip  { color: var(--warn-ink, #8a6200); background: var(--warn-bg); }
+  .badge.wip  { color: #8a6200; background: var(--warn-bg); }
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .badge.wip { color: var(--warn); } }
   .badge.todo { color: var(--todo-ink); background: var(--todo-bg); }
-  .badge svg { width: 11px; height: 11px; flex: none; }
+  .badge svg { width: 10px; height: 10px; flex: none; }
 
   /* ---- integrations ---- */
-  .integrations { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
-  .integration-card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-    padding: 16px 18px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 8px;
-  }
-  .integration-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-  .integration-name { font-weight: 600; font-size: 0.98rem; }
-  .integration-kind { font-size: 0.72rem; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 2px; }
-  .integration-role { font-size: 0.85rem; color: var(--ink-2); }
-  .status-pill { font-size: 0.72rem; font-weight: 700; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+  .integrations { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .integration-card { padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; }
+  .integration-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; }
+  .integration-name { font-weight: 600; font-size: 0.86rem; }
+  .integration-role { font-size: 0.76rem; color: var(--ink-2); }
+  .status-pill { font-size: 0.66rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
   .status-pill.connected { color: var(--good); background: var(--good-bg); }
   .status-pill.planned { color: #8a6200; background: var(--warn-bg); }
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .status-pill.planned { color: var(--warn); } }
 
   /* ---- flow ---- */
   .flow { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; }
-  .flow-step {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-    padding: 14px 14px; box-shadow: var(--shadow); flex: 1 1 150px; min-width: 150px;
-    display: flex; flex-direction: column; gap: 6px; position: relative;
-  }
-  .flow-step .num {
-    width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 0.75rem; font-weight: 700; color: #fff;
-    background: linear-gradient(135deg, var(--brand-violet), var(--brand-orange));
-  }
-  .flow-step .t { font-weight: 600; font-size: 0.88rem; }
-  .flow-step .d { font-size: 0.78rem; color: var(--ink-2); }
-  .flow-arrow { display: flex; align-items: center; justify-content: center; padding: 0 4px; color: var(--ink-muted); flex: 0 0 auto; }
-  .flow-branch { display: flex; gap: 10px; flex: 1 1 320px; min-width: 220px; }
+  .flow-step { padding: 10px 12px; box-shadow: var(--shadow); background: var(--surface); border: 1px solid var(--border); border-radius: 10px; flex: 1 1 128px; min-width: 128px; display: flex; flex-direction: column; gap: 4px; }
+  .flow-step .num { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.66rem; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--brand-violet), var(--brand-orange)); }
+  .flow-step .t { font-weight: 600; font-size: 0.8rem; }
+  .flow-step .d { font-size: 0.7rem; color: var(--ink-muted); }
+  .flow-arrow { display: flex; align-items: center; justify-content: center; padding: 0 3px; color: var(--ink-muted); flex: 0 0 auto; font-size: 0.85rem; }
+  .flow-branch { display: flex; gap: 8px; flex: 1 1 280px; min-width: 200px; }
   .flow-branch .flow-step { flex: 1; }
-  @media (max-width: 640px) {
-    .flow { flex-direction: column; }
-    .flow-arrow { transform: rotate(90deg); padding: 2px 0; }
-    .flow-branch { flex-direction: column; }
-  }
+  @media (max-width: 640px) { .flow { flex-direction: column; } .flow-arrow { transform: rotate(90deg); padding: 1px 0; } .flow-branch { flex-direction: column; } }
 
   /* ---- impact ---- */
-  .impact-note { font-size: 0.85rem; color: var(--ink-muted); background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; margin-bottom: 16px; }
-  .impact-grid { display: grid; gap: 10px; }
-  .impact-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; box-shadow: var(--shadow); }
-  .impact-before, .impact-after { font-size: 0.86rem; }
+  .impact-note { font-size: 0.76rem; color: var(--ink-muted); margin: -8px 0 10px; }
+  .impact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  @media (max-width: 560px) { .impact-grid { grid-template-columns: 1fr; } }
+  .impact-row { display: flex; align-items: center; gap: 8px; padding: 10px 12px; font-size: 0.8rem; }
   .impact-before { color: var(--ink-2); }
   .impact-after { color: var(--ink); font-weight: 600; }
-  .impact-arrow { color: var(--brand-orange); font-size: 1.1rem; }
-  @media (max-width: 560px) { .impact-row { grid-template-columns: 1fr; } .impact-arrow { display: none; } }
+  .impact-arrow { color: var(--brand-orange); flex: none; }
 
   /* ---- gantt ---- */
   .gantt-wrap { overflow-x: auto; border-radius: 12px; box-shadow: var(--shadow); }
-  .gantt { display: grid; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; min-width: 680px; }
+  .gantt { display: grid; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; min-width: 660px; }
   .gantt-head, .gantt-row { display: contents; }
-  .gantt-cell { padding: 8px 12px; border-bottom: 1px solid var(--line); display: flex; align-items: center; min-height: 18px; }
-  .gantt-head .gantt-cell {
-    background: var(--surface-2); font-weight: 600; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.03em;
-    flex-direction: column; align-items: flex-start; gap: 2px; padding-top: 10px; padding-bottom: 10px;
-  }
-  .gantt-head .gantt-cell .blurb { font-size: 0.68rem; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--ink-muted); }
-  .gantt-current { color: var(--brand-orange); font-weight: 700; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.04em; }
-  .gantt-label { font-size: 0.82rem; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .gantt-bar-cell { padding-top: 9px; padding-bottom: 9px; }
-  .gantt-bar { height: 16px; width: 100%; border-radius: 6px; }
+  .gantt-cell { padding: 7px 11px; border-bottom: 1px solid var(--line); display: flex; align-items: center; min-height: 16px; }
+  .gantt-head .gantt-cell { background: var(--surface-2); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.03em; flex-direction: column; align-items: flex-start; gap: 1px; padding-top: 8px; padding-bottom: 8px; }
+  .gantt-head .gantt-cell .blurb { font-size: 0.64rem; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--ink-muted); }
+  .gantt-current { color: var(--brand-orange); font-weight: 700; font-size: 0.6rem; text-transform: uppercase; }
+  .gantt-label { font-size: 0.78rem; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .gantt-bar-cell { padding-top: 8px; padding-bottom: 8px; }
+  .gantt-bar { height: 14px; width: 100%; border-radius: 5px; }
   .gantt-bar.done { background: var(--good); }
   .gantt-bar.wip { background: var(--warn); }
   .gantt-bar.todo { background: transparent; border: 1.5px dashed var(--todo-ink); }
 
-  .links { display: flex; gap: 10px; flex-wrap: wrap; }
-  .links a { display: inline-block; padding: 8px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); color: var(--ink); text-decoration: none; font-size: 0.88rem; box-shadow: var(--shadow); }
+  /* ---- decisions ---- */
+  .decisions { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 8px; }
+  .decision-pill { font-size: 0.76rem; background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; box-shadow: var(--shadow); }
+  .decision-pill b { color: var(--brand-orange); font-weight: 700; }
+  .gate-line { font-size: 0.78rem; color: var(--ink-muted); }
+
+  .links { display: flex; gap: 8px; flex-wrap: wrap; }
+  .links a { display: inline-block; padding: 7px 12px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); color: var(--ink); text-decoration: none; font-size: 0.82rem; box-shadow: var(--shadow); }
   .links a:hover { border-color: var(--brand-orange); color: var(--brand-orange); }
-  .note { font-size: 0.85rem; color: var(--ink-muted); margin-top: 8px; }
-  footer { color: var(--ink-muted); font-size: 0.82rem; margin-top: 56px; border-top: 1px solid var(--line); padding-top: 16px; }
-  #data-error { display: none; background: var(--warn-bg); color: #8a6200; border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; font-size: 0.88rem; margin-bottom: 24px; }
+  .note { font-size: 0.78rem; color: var(--ink-muted); margin-top: 6px; }
+  footer { color: var(--ink-muted); font-size: 0.76rem; margin-top: 40px; border-top: 1px solid var(--line); padding-top: 12px; }
+  #data-error { display: none; background: var(--warn-bg); color: #8a6200; border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; font-size: 0.82rem; margin-bottom: 20px; }
 </style>
 </head>
 <body>
 <main>
   <div class="hero">
     <h1>N.O.V.A.</h1>
-    <p class="tagline">Tracking dashboard — pipeline design proposal, not yet built</p>
-    <p id="live-status"><span class="dot"></span>Loading live status…</p>
-    <div class="acronym"><b>N</b>ormalize · <b>O</b>rganize · <b>V</b>erify · <b>A</b>rchive — turns scattered source material from every project and client you're handed into structured, categorized Obsidian notes, queryable as a database, feeding Northstar's strategy layer.</div>
+    <p class="tagline">Normalize · Organize · Verify · Archive — every project's scattered files, into one searchable vault.</p>
+    <p id="live-status"><span class="dot"></span>Loading…</p>
   </div>
 
-  <div id="data-error">Could not load live data.json — showing the page shell only. This happens when the file is opened directly from disk (file://) instead of served over http(s), e.g. via GitHub Pages.</div>
+  <div id="data-error">Live data.json unavailable — showing the page shell only (this file needs http/https, e.g. GitHub Pages, not file://).</div>
 
   <section id="status">
-    <h2>Build Progress</h2>
-    <div class="progress-card">
-      <div class="progress-top">
-        <span class="label">Overall completion</span>
-        <span class="pct" id="progress-pct">—</span>
+    <div class="top-grid">
+      <div class="card progress-card">
+        <div class="progress-top"><span class="label">Build progress</span><span class="pct" id="progress-pct">—</span></div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+        <div class="progress-mini">
+          <div class="m"><div class="n" id="mini-tasks">—</div><div class="l">Tasks</div></div>
+          <div class="m"><div class="n" id="mini-tests">—</div><div class="l">Tests run</div></div>
+        </div>
       </div>
-      <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
-      <p class="progress-note" id="progress-note">Weighted: Done = full credit, In progress = half credit.</p>
+      <div class="card donut-card">
+        <svg id="donut" width="88" height="88" viewBox="0 0 88 88"></svg>
+        <div class="donut-legend" id="donut-legend"></div>
+      </div>
     </div>
-    <div class="stats" id="stats-row" style="margin-top:12px"></div>
   </section>
 
   <section id="objectives">
     <h2>Objectives</h2>
-    <ul class="plain">
-      <li>Give the team one place to find everything about a project instead of hunting across Drive, Canva, and chat threads — whichever client or campaign it's for</li>
-      <li>Preserve institutional knowledge as projects wrap, clients rotate, or people move on</li>
-      <li>Cut the time to compile a project's key facts for planning or handoff from hours to minutes</li>
-      <li>Feed Northstar's strategy layer with clean, structured, current source material, across every project at once</li>
-    </ul>
+    <div class="obj-grid" id="obj-grid"></div>
   </section>
 
   <section id="features">
     <h2>Features</h2>
-    <ul class="plain">
-      <li>Multi-format ingestion: Google Docs, Sheets, Canva slide decks, CSVs, plain text, images</li>
-      <li>Automatic key-fact extraction and summarization per source</li>
-      <li>Categorization by project, client, and content type — rules first, AI fallback flagged for review</li>
-      <li>Structured Obsidian notes queryable as a database via Bases/Dataview, no separate database engine</li>
-      <li>Dedupe and update-in-place instead of duplicate notes for the same source</li>
-      <li>A Needs Review view that surfaces anything AI-categorized before it's trusted</li>
-      <li>One vault, many projects — new clients or campaigns are new categories, not new tools</li>
-    </ul>
+    <div class="chip-row" id="features-row"></div>
+  </section>
+
+  <section id="quickstart">
+    <h2>How to Use</h2>
+    <div class="qs-steps" id="qs-steps"></div>
+    <div class="card example-card" id="example-card"></div>
   </section>
 
   <section id="integrations">
     <h2>Integrations</h2>
     <div class="integrations" id="integrations-grid"></div>
-    <p class="note">"Connected" means this Cowork session already has working access. "Planned" means it's needed but not wired up yet — n8n's exact role in the pipeline is still an open decision.</p>
   </section>
 
   <section id="flow">
     <h2>Workflow</h2>
     <div class="flow">
-      <div class="flow-step"><div class="num">1</div><div class="t">Inbox</div><div class="d">Drop a file or link — manual submission, no background polling</div></div>
+      <div class="flow-step"><div class="num">1</div><div class="t">Inbox</div><div class="d">Drop file or link</div></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step"><div class="num">2</div><div class="t">Fetch &amp; parse</div><div class="d">Pull the source content by format</div></div>
+      <div class="flow-step"><div class="num">2</div><div class="t">Fetch</div><div class="d">Pull content by format</div></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step"><div class="num">3</div><div class="t">Extract key info</div><div class="d">Claude summarizes and pulls out the facts that matter</div></div>
+      <div class="flow-step"><div class="num">3</div><div class="t">Extract</div><div class="d">Claude pulls the facts</div></div>
       <div class="flow-arrow">→</div>
       <div class="flow-branch">
-        <div class="flow-step"><div class="num">4a</div><div class="t">Rule match</div><div class="d">Known project/client location → categorize by rule</div></div>
-        <div class="flow-step"><div class="num">4b</div><div class="t">AI fallback</div><div class="d">No rule match → AI categorizes, flagged needs-review</div></div>
+        <div class="flow-step"><div class="num">4a</div><div class="t">Rule match</div><div class="d">Known location</div></div>
+        <div class="flow-step"><div class="num">4b</div><div class="t">AI fallback</div><div class="d">Flagged for review</div></div>
       </div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step"><div class="num">5</div><div class="t">Write to vault</div><div class="d">Update the existing note in place, or create a new one</div></div>
+      <div class="flow-step"><div class="num">5</div><div class="t">Write note</div><div class="d">Update or create</div></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step"><div class="num">6</div><div class="t">Vault views</div><div class="d">Queryable immediately via Bases/Dataview</div></div>
+      <div class="flow-step"><div class="num">6</div><div class="t">Vault views</div><div class="d">Queryable instantly</div></div>
     </div>
   </section>
 
   <section id="impact">
-    <h2>Projected Productivity Impact</h2>
+    <h2>Projected Impact</h2>
     <p class="impact-note" id="impact-note"></p>
     <div class="impact-grid" id="impact-grid"></div>
   </section>
 
   <section id="timeline">
     <h2>Timeline by Phase</h2>
-    <p class="note" style="margin-top:0">Phases, not calendar dates — this proposal has no build schedule yet, so tasks are sequenced by phase rather than by date. The highlighted phase below is where work currently stands.</p>
+    <p class="section-sub">Ordered by phase, not calendar dates — no build schedule exists yet.</p>
     <div class="gantt-wrap"><div class="gantt" id="gantt-grid"></div></div>
   </section>
 
@@ -285,12 +298,10 @@
       <thead><tr><th>#</th><th>Task</th><th>Phase</th><th>Status</th></tr></thead>
       <tbody id="tasks-body"></tbody>
     </table>
-    <p class="note">Owner on every task is Akira for now. This table is generated from <code>data.json</code>, which mirrors the vault's Decision Log and Project Plan — edit <code>data.json</code> to update status, not this page.</p>
   </section>
 
   <section id="tests">
     <h2>Test Status</h2>
-    <p class="note" style="margin-top:0">Nothing has been built yet, so nothing has run — this is the planned QA coverage for Phase 0/1.</p>
     <table>
       <thead><tr><th>Test</th><th>Validates</th><th>Status</th></tr></thead>
       <tbody id="tests-body"></tbody>
@@ -298,9 +309,9 @@
   </section>
 
   <section id="review">
-    <h2>Review &amp; Approval</h2>
-    <p>This is a proposal, not a build. What needs a decision before Phase 1 starts: what counts as "key information" for an image (D-006), whether notes ever get archived (D-007), whether Canva's text extraction is reliable enough to depend on (D-008), and n8n's role, if any, in triggering the pipeline (D-010).</p>
-    <p><b>Build gate:</b> Phase 1 begins once Phase 0's sample notes and Bases view confirm the schema works, and D-006/D-007 are resolved.</p>
+    <h2>Open Decisions</h2>
+    <div class="decisions" id="decisions-row"></div>
+    <p class="gate-line" id="gate-line"></p>
   </section>
 
   <section id="obsidian-links">
@@ -311,11 +322,11 @@
       <a href="obsidian://open?vault=Asgard&amp;file=NOVA%2FNOVA%20-%20Decision%20Log">Decision Log</a>
       <a href="obsidian://open?vault=Asgard&amp;file=NOVA%2FNOVA%20-%20Design%20Proposal">Design Proposal</a>
     </div>
-    <p class="note">These links only work on a computer with the Asgard vault open in Obsidian — they won't resolve for anyone else viewing this page.</p>
+    <p class="note">Links resolve only on a computer with the Asgard vault open.</p>
   </section>
 
   <footer>
-    N.O.V.A. tracking dashboard · source: Documents/Asgard/Asgard/NOVA · this page refreshes its data automatically every 60s while open
+    N.O.V.A. · Documents/Asgard/Asgard/NOVA · auto-refreshes every 60s
   </footer>
 </main>
 <script>
@@ -326,59 +337,103 @@
     todo: ''
   };
   const WEIGHT = { done: 1, wip: 0.5, todo: 0 };
+  const cssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 
-  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
-
-  function renderStats(stats) {
-    document.getElementById('stats-row').innerHTML = stats.map(s =>
-      `<div class="stat"><div class="n">${s.n}</div><div class="l">${s.l}</div></div>`
-    ).join('');
-  }
-
-  function renderProgress(tasks) {
+  function renderProgress(tasks, testsCount, testsRun) {
     const total = tasks.length;
     const earned = tasks.reduce((sum, t) => sum + (WEIGHT[t.status] ?? 0), 0);
     const pct = total ? Math.round((earned / total) * 100) : 0;
     document.getElementById('progress-pct').textContent = pct + '%';
     document.getElementById('progress-fill').style.width = pct + '%';
-    document.getElementById('progress-note').textContent =
-      `Weighted: Done = full credit, In progress = half credit — ${earned} of ${total} task-credits earned.`;
+    document.getElementById('mini-tasks').textContent = total;
+    document.getElementById('mini-tests').textContent = `${testsRun}/${testsCount}`;
+  }
+
+  function renderDonut(tasks) {
+    const counts = { done: 0, wip: 0, todo: 0 };
+    tasks.forEach(t => { counts[t.status] = (counts[t.status] || 0) + 1; });
+    const total = tasks.length || 1;
+    const colors = { done: cssVar('--good'), wip: cssVar('--warn'), todo: cssVar('--line') };
+    const labels = { done: 'Done', wip: 'In progress', todo: 'Not started' };
+    const r = 34, cx = 44, cy = 44, circ = 2 * Math.PI * r;
+    let offset = 0;
+    const svg = document.getElementById('donut');
+    let arcs = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${colors.todo}" stroke-width="12" opacity="0.25"/>`;
+    ['done', 'wip', 'todo'].forEach(key => {
+      const frac = counts[key] / total;
+      if (frac <= 0) return;
+      const len = frac * circ;
+      arcs += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${colors[key]}" stroke-width="12"
+        stroke-dasharray="${len} ${circ - len}" stroke-dashoffset="${-offset}" transform="rotate(-90 ${cx} ${cy})"
+        stroke-linecap="butt"><title>${labels[key]}: ${counts[key]}</title></circle>`;
+      offset += len;
+    });
+    const pctDone = Math.round(((counts.done + counts.wip * 0.5) / total) * 100);
+    svg.innerHTML = arcs + `<text x="${cx}" y="${cy + 5}" text-anchor="middle" font-size="15" font-weight="700" fill="${cssVar('--ink')}">${pctDone}%</text>`;
+    document.getElementById('donut-legend').innerHTML = ['done', 'wip', 'todo'].map(key => `
+      <div class="row"><span class="sw" style="background:${colors[key]}"></span><span class="lbl">${labels[key]}</span><span class="cnt">${counts[key]}</span></div>
+    `).join('');
+  }
+
+  function renderObjectives(items) {
+    document.getElementById('obj-grid').innerHTML = items.map((o, i) => `
+      <div class="card obj-tile">
+        <div class="obj-num">${String(i + 1).padStart(2, '0')}</div>
+        <div><div class="obj-label">${esc(o.label)}</div><div class="obj-sub">${esc(o.sub)}</div></div>
+      </div>
+    `).join('');
+  }
+
+  function renderFeatures(items) {
+    document.getElementById('features-row').innerHTML = items.map(f => `<span class="chip">${esc(f)}</span>`).join('');
+  }
+
+  function renderQuickstart(qs) {
+    document.getElementById('qs-steps').innerHTML = qs.steps.map(s => `
+      <div class="card qs-step">
+        <div class="qs-num">${s.n}</div>
+        <div><div class="qs-label">${esc(s.label)}</div><div class="qs-sub">${esc(s.sub)}</div></div>
+      </div>
+    `).join('');
+    document.getElementById('example-card').innerHTML = `
+      <div><div class="example-tag">Sample input</div><div class="example-io">${esc(qs.example_input)}</div></div>
+      <div class="example-arrow">→</div>
+      <div><div class="example-tag">Resulting note</div><div class="example-io">${esc(qs.example_output)}</div></div>
+    `;
+  }
+
+  function renderIntegrations(items) {
+    document.getElementById('integrations-grid').innerHTML = items.map(i => `
+      <div class="card integration-card">
+        <div class="integration-top">
+          <div class="integration-name">${esc(i.name)}</div>
+          <span class="status-pill ${i.status}">${i.status === 'connected' ? 'Connected' : 'Planned'}</span>
+        </div>
+        <div class="integration-role">${esc(i.role)}</div>
+      </div>
+    `).join('');
   }
 
   function renderTasks(tasks) {
     document.getElementById('tasks-body').innerHTML = tasks.map(t =>
-      `<tr><td>${t.n}</td><td>${t.task}</td><td>${t.phase}</td><td><span class="badge ${t.status}">${STATUS_ICON[t.status]}${STATUS_LABEL[t.status] || t.status}</span></td></tr>`
+      `<tr><td>${t.n}</td><td>${esc(t.task)}</td><td>${esc(t.phase)}</td><td><span class="badge ${t.status}">${STATUS_ICON[t.status]}${STATUS_LABEL[t.status]}</span></td></tr>`
     ).join('');
   }
 
   function renderTests(tests) {
     document.getElementById('tests-body').innerHTML = tests.map(t =>
-      `<tr><td>${t.test}</td><td>${t.validates}</td><td><span class="badge ${t.status}">${STATUS_ICON[t.status]}${STATUS_LABEL[t.status] || t.status}</span></td></tr>`
+      `<tr><td>${esc(t.test)}</td><td>${esc(t.validates)}</td><td><span class="badge ${t.status}">${STATUS_ICON[t.status]}${STATUS_LABEL[t.status]}</span></td></tr>`
     ).join('');
-  }
-
-  function renderIntegrations(items) {
-    document.getElementById('integrations-grid').innerHTML = items.map(i => `
-      <div class="integration-card">
-        <div class="integration-top">
-          <div>
-            <div class="integration-name">${i.name}</div>
-            <div class="integration-kind">${i.kind}</div>
-          </div>
-          <span class="status-pill ${i.status}">${i.status === 'connected' ? 'Connected' : 'Planned'}</span>
-        </div>
-        <div class="integration-role">${i.role}</div>
-      </div>
-    `).join('');
   }
 
   function renderImpact(impact) {
     document.getElementById('impact-note').textContent = impact.note;
     document.getElementById('impact-grid').innerHTML = impact.items.map(i => `
-      <div class="impact-row">
-        <div class="impact-before">${i.before}</div>
-        <div class="impact-arrow">→</div>
-        <div class="impact-after">${i.after}</div>
+      <div class="card impact-row">
+        <span class="impact-before">${esc(i.before)}</span>
+        <span class="impact-arrow">→</span>
+        <span class="impact-after">${esc(i.after)}</span>
       </div>
     `).join('');
   }
@@ -387,43 +442,43 @@
     const grid = document.getElementById('gantt-grid');
     if (!phases || !phases.length) { grid.innerHTML = ''; return; }
     const phaseKeys = phases.map(p => p.key);
-
-    // The current phase: the earliest phase (in order) that still has an unfinished task.
     let currentPhase = null;
     for (const key of phaseKeys) {
       const inPhase = tasks.filter(t => t.phase === key);
       if (inPhase.some(t => t.status !== 'done')) { currentPhase = key; break; }
     }
-
-    grid.style.gridTemplateColumns = `220px repeat(${phases.length}, minmax(100px, 1fr))`;
-
+    grid.style.gridTemplateColumns = `200px repeat(${phases.length}, minmax(96px, 1fr))`;
     let html = '<div class="gantt-head"><div class="gantt-cell"></div>';
     phases.forEach(p => {
       html += `<div class="gantt-cell"><span>${esc(p.label)}${p.key === currentPhase ? ' <span class="gantt-current">current</span>' : ''}</span><span class="blurb">${esc(p.blurb)}</span></div>`;
     });
     html += '</div>';
-
     tasks.forEach(t => {
       html += '<div class="gantt-row">';
       html += `<div class="gantt-cell gantt-label" title="${esc(t.task)}">#${t.n} ${esc(t.task)}</div>`;
       phaseKeys.forEach(key => {
-        if (key === t.phase) {
-          html += `<div class="gantt-cell gantt-bar-cell"><div class="gantt-bar ${t.status}" title="${esc(t.task)} — ${STATUS_LABEL[t.status]}"></div></div>`;
-        } else {
-          html += '<div class="gantt-cell"></div>';
-        }
+        html += key === t.phase
+          ? `<div class="gantt-cell gantt-bar-cell"><div class="gantt-bar ${t.status}" title="${esc(t.task)} — ${STATUS_LABEL[t.status]}"></div></div>`
+          : '<div class="gantt-cell"></div>';
       });
       html += '</div>';
     });
     grid.innerHTML = html;
   }
 
+  function renderDecisions(decisions, buildGate) {
+    document.getElementById('decisions-row').innerHTML = decisions.map(d =>
+      `<span class="decision-pill"><b>${esc(d.id)}</b> · ${esc(d.label)}</span>`
+    ).join('');
+    document.getElementById('gate-line').textContent = buildGate;
+  }
+
   function setLiveStatus(updatedIso, ok) {
     const el = document.getElementById('live-status');
-    if (!ok) { el.innerHTML = '<span class="dot"></span>Live data unavailable — see note below.'; return; }
+    if (!ok) { el.innerHTML = '<span class="dot"></span>Live data unavailable'; return; }
     let when = updatedIso;
     try { when = new Date(updatedIso).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }); } catch (e) {}
-    el.innerHTML = `<span class="dot"></span>Live — last updated ${when} · auto-refreshes every 60s`;
+    el.innerHTML = `<span class="dot"></span>Live · updated ${when}`;
   }
 
   async function loadData() {
@@ -432,13 +487,18 @@
       if (!res.ok) throw new Error('HTTP ' + res.status);
       const data = await res.json();
       document.getElementById('data-error').style.display = 'none';
-      renderStats(data.stats);
-      renderProgress(data.tasks);
+      const testsRun = data.tests.filter(t => t.status === 'done').length;
+      renderProgress(data.tasks, data.tests.length, testsRun);
+      renderDonut(data.tasks);
+      renderObjectives(data.objectives);
+      renderFeatures(data.features);
+      renderQuickstart(data.quickstart);
+      renderIntegrations(data.integrations);
       renderTasks(data.tasks);
       renderTests(data.tests);
-      renderIntegrations(data.integrations);
       renderImpact(data.impact);
       renderGantt(data.tasks, data.phases);
+      renderDecisions(data.decisions, data.build_gate);
       setLiveStatus(data.updated, true);
     } catch (err) {
       document.getElementById('data-error').style.display = 'block';
