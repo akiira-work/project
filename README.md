@@ -1,17 +1,24 @@
-# N.O.V.A. Tracker
+# project
 
-A single-page tracking dashboard for the **N.O.V.A.** project (Normalize · Organize · Verify · Archive) — the pipeline that consolidates CABAL source material into structured Obsidian notes.
+GitHub Pages home at `https://akiira-work.github.io/project/` for shareable project trackers. Currently holds one:
 
-Live page: `index.html` (static, no build step, no dependencies besides the Mermaid CDN script for the flow diagram).
+## N.O.V.A. tracker
+
+Path: `nova/tracker/` → live at **https://akiira-work.github.io/project/nova/tracker/**
+
+A single-page tracking dashboard for the **N.O.V.A.** project (Normalize · Organize · Verify · Archive) — the pipeline that consolidates CABAL source material into structured Obsidian notes. Built for reviewers: objectives, features, flow diagram, the full task tracker, test status, and the open decisions blocking build start.
 
 Source of truth is the Obsidian vault at `Documents/Asgard/Asgard/NOVA/`:
 - `NOVA - Project Hub.md`
 - `NOVA - Project Plan.md`
 - `NOVA - Decision Log.md`
+- `NOVA - Design Proposal.md`
 
-This page is a **snapshot** of that content for sharing outside the vault. It does not auto-sync with the vault, but once it's live it *does* auto-refresh itself: `index.html` fetches `data.json` on load and again every 60 seconds, so anyone with the page open sees a status change within a minute of it being pushed — no full redeploy or hard refresh needed.
+The page (`nova/tracker/index.html`) renders entirely from `nova/tracker/data.json` and re-fetches that file every 60 seconds while open, so anyone with the tab open sees a status change within a minute of it being pushed — no redeploy of the HTML needed.
 
-**To update task/test status:** edit `data.json` (small file, one line per task/test), commit, and push. Do not hand-edit the tables in `index.html` — it renders entirely from `data.json`.
+**To update task/test status:** edit `nova/tracker/data.json` (small file, one entry per task/test), commit, and push. Don't hand-edit the tables in `index.html` — it's generated from the JSON.
+
+The repo root (`index.html`) is just a redirect into `nova/tracker/`, so visiting `https://akiira-work.github.io/project/` lands on the tracker automatically. Future sub-projects can live alongside `nova/` the same way.
 
 ## Push to GitHub
 
@@ -24,11 +31,11 @@ git branch -M main
 git push -u origin main
 ```
 
-(Create the empty repo on GitHub first — no README/license/gitignore, since this folder already has its own.)
+(Skip `git remote add` if it's already set — check with `git remote -v`. Create the empty repo on GitHub first if it doesn't exist yet — no README/license/gitignore, since this folder already has its own.)
 
 ## Enable GitHub Pages
 
 1. On GitHub, go to the repo's **Settings → Pages**
 2. Under **Build and deployment**, set **Source** to "Deploy from a branch"
 3. Branch: `main`, folder: `/ (root)`
-4. Save — GitHub gives you the page at `https://akiira-work.github.io/project/` within a minute or two
+4. Save — GitHub serves the site at `https://akiira-work.github.io/project/` within a minute or two, and the tracker specifically at `https://akiira-work.github.io/project/nova/tracker/`
