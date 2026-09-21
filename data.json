@@ -1,0 +1,35 @@
+{
+  "updated": "2026-09-21T00:00:00Z",
+  "stats": [
+    { "n": 16, "l": "Tasks" },
+    { "n": 1, "l": "Done" },
+    { "n": 1, "l": "In progress" },
+    { "n": 14, "l": "Not started" },
+    { "n": "0/5", "l": "Tests run" }
+  ],
+  "tasks": [
+    { "n": 1, "task": "Confirm and connect the vault folder", "phase": "Phase 0", "status": "done" },
+    { "n": 2, "task": "Hand-write 3–5 sample notes across CABAL Mobile, RED, Pride", "phase": "Phase 0", "status": "todo" },
+    { "n": 3, "task": "Build one Bases view over the sample notes", "phase": "Phase 0", "status": "todo" },
+    { "n": 4, "task": "Confirm the view answers real lookup questions; adjust schema if not", "phase": "Phase 0", "status": "todo" },
+    { "n": 5, "task": "Decide what counts as \"key information\" for an image (D-006)", "phase": "Phase 0", "status": "todo" },
+    { "n": 6, "task": "Decide note lifecycle / archiving policy (D-007)", "phase": "Phase 0", "status": "todo" },
+    { "n": 7, "task": "Set up the Inbox convention (folder or note)", "phase": "Phase 1", "status": "todo" },
+    { "n": 8, "task": "Draft and finalize the rule table for known Drive/Canva locations", "phase": "Phase 1", "status": "wip" },
+    { "n": 9, "task": "Test Canva connector text extraction on one real CABAL RED design (D-008)", "phase": "Phase 1", "status": "todo" },
+    { "n": 10, "task": "Run the pipeline manually end-to-end on one source per format", "phase": "Phase 1", "status": "todo" },
+    { "n": 11, "task": "Review and correct AI-inferred categorizations from the trial run", "phase": "Phase 1", "status": "todo" },
+    { "n": 12, "task": "Turn the pipeline into a repeatable checklist or prompt", "phase": "Phase 2", "status": "todo" },
+    { "n": 13, "task": "Build the rule table as an editable config file", "phase": "Phase 2", "status": "todo" },
+    { "n": 14, "task": "Set up a Cowork scheduled task fired on demand (optional)", "phase": "Phase 2", "status": "todo" },
+    { "n": 15, "task": "Evaluate whether volume justifies a standalone script", "phase": "Phase 3", "status": "todo" },
+    { "n": 16, "task": "Build standalone script calling Google/Canva/Claude APIs directly (only if triggered)", "phase": "Phase 3", "status": "todo" }
+  ],
+  "tests": [
+    { "test": "Schema completeness", "validates": "Every field in the note schema captures what's actually needed", "status": "todo" },
+    { "test": "Bases view accuracy", "validates": "The three vault views return the right notes when filtered/grouped", "status": "todo" },
+    { "test": "End-to-end ingestion per format", "validates": "One real source each for Google Doc, Sheet, Canva, CSV, image, text runs through the pipeline without manual fixes", "status": "todo" },
+    { "test": "Categorization accuracy", "validates": "Rule-matched and AI-fallback categorizations are correct on a sample of 10 sources", "status": "todo" },
+    { "test": "Dedupe / update-in-place", "validates": "Re-submitting the same source updates the existing note instead of duplicating it", "status": "todo" }
+  ]
+}

@@ -30,7 +30,9 @@
   }
   main { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
   header h1 { font-size: 1.9rem; margin: 0 0 4px; letter-spacing: -0.01em; }
-  header p.tagline { color: var(--muted); margin: 0 0 24px; font-size: 0.98rem; }
+  header p.tagline { color: var(--muted); margin: 0 0 8px; font-size: 0.98rem; }
+  #live-status { font-size: 0.8rem; color: var(--muted); margin: 0 0 24px; }
+  #live-status .dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--done); margin-right: 6px; }
   .acronym { font-size: 0.92rem; color: var(--muted); margin-bottom: 28px; }
   .acronym b { color: var(--ink); }
   section { margin: 40px 0; }
@@ -55,6 +57,7 @@
   .note { font-size: 0.85rem; color: var(--muted); margin-top: 8px; }
   .mermaid { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
   footer { color: var(--muted); font-size: 0.82rem; margin-top: 56px; border-top: 1px solid var(--line); padding-top: 16px; }
+  #data-error { display: none; background: var(--wip-bg); color: var(--wip); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; font-size: 0.88rem; margin-bottom: 24px; }
 </style>
 </head>
 <body>
@@ -62,18 +65,15 @@
   <header>
     <h1>N.O.V.A.</h1>
     <p class="tagline">Tracking dashboard — pipeline design proposal, not yet built</p>
+    <p id="live-status"><span class="dot"></span>Loading live status…</p>
     <div class="acronym"><b>N</b>ormalize · <b>O</b>rganize · <b>V</b>erify · <b>A</b>rchive — turns scattered CABAL source material into structured, categorized Obsidian notes, queryable as a database, feeding Northstar's strategy layer.</div>
   </header>
 
+  <div id="data-error">Could not load live data.json — showing the page shell only. This happens when the file is opened directly from disk (file://) instead of served over http(s), e.g. via GitHub Pages.</div>
+
   <section id="status">
     <h2>At a Glance</h2>
-    <div class="stats">
-      <div class="stat"><div class="n">16</div><div class="l">Tasks</div></div>
-      <div class="stat"><div class="n">1</div><div class="l">Done</div></div>
-      <div class="stat"><div class="n">1</div><div class="l">In progress</div></div>
-      <div class="stat"><div class="n">14</div><div class="l">Not started</div></div>
-      <div class="stat"><div class="n">0/5</div><div class="l">Tests run</div></div>
-    </div>
+    <div class="stats" id="stats-row"></div>
   </section>
 
   <section id="objectives">
@@ -121,26 +121,9 @@ flowchart LR
     <h2>Task Tracker</h2>
     <table>
       <thead><tr><th>#</th><th>Task</th><th>Phase</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr><td>1</td><td>Confirm and connect the vault folder</td><td>Phase 0</td><td><span class="badge done">Done</span></td></tr>
-        <tr><td>2</td><td>Hand-write 3–5 sample notes across CABAL Mobile, RED, Pride</td><td>Phase 0</td><td><span class="badge todo">Not started</span></td></tr>
-        <tr><td>3</td><td>Build one Bases view over the sample notes</td><td>Phase 0</td><td><span class="badge todo">Not started</span></td></tr>
-        <tr><td>4</td><td>Confirm the view answers real lookup questions; adjust schema if not</td><td>Phase 0</td><td><span class="badge todo">Not started</span></td></tr>
-        <tr><td>5</td><td>Decide what counts as "key information" for an image (D-006)</td><td>Phase 0</td><td><span class="badge todo">Not started</span></td></tr>
-        <tr><td>6</td><td>Decide note lifecycle / archiving policy (D-007)</td><td>Phase 0</td><td><span class="badge todo">Not started</span></td></tr>
-        <tr><td>7</td><td>Set up the Inbox convention (folder or note)</td><td>Phase 1</td><td><span class="badge todo">Not started</span></td></tr>
-        <tr><td>8</td><td>Draft and finalize the rule table for known Drive/Canva locations</td><td>Phase 1</td><td><span class="badge wip">In progress</span></td></tr>
-        <tr><td>9</td><td>Test Canva connector text extraction on one real CABAL RED design (D-008)</td><td>Phase 1</td><td><span class="badge todo">Not started</span></td></tr>
-        <tr><td>10</td><td>Run the pipeline manually end-to-end on one source per format</td><td>Phase 1</td><td><span class="badge todo">Not started</span></td></tr>
-        <tr><td>11</td><td>Review and correct AI-inferred categorizations from the trial run</td><td>Phase 1</td><td><span class="badge todo">Not started</span></td></tr>
-        <tr><td>12</td><td>Turn the pipeline into a repeatable checklist or prompt</td><td>Phase 2</td><td><span class="badge todo">Not started</span></td></tr>
-        <tr><td>13</td><td>Build the rule table as an editable config file</td><td>Phase 2</td><td><span class="badge todo">Not started</span></td></tr>
-        <tr><td>14</td><td>Set up a Cowork scheduled task fired on demand (optional)</td><td>Phase 2</td><td><span class="badge todo">Not started</span></td></tr>
-        <tr><td>15</td><td>Evaluate whether volume justifies a standalone script</td><td>Phase 3</td><td><span class="badge todo">Not started</span></td></tr>
-        <tr><td>16</td><td>Build standalone script calling Google/Canva/Claude APIs directly (only if triggered)</td><td>Phase 3</td><td><span class="badge todo">Not started</span></td></tr>
-      </tbody>
+      <tbody id="tasks-body"></tbody>
     </table>
-    <p class="note">Owner on every task is Akira for now. This table is generated from the vault's Decision Log and Project Plan — edit the source markdown, not this page, and regenerate.</p>
+    <p class="note">Owner on every task is Akira for now. This table is generated from <code>data.json</code>, which mirrors the vault's Decision Log and Project Plan — edit <code>data.json</code> to update status, not this page.</p>
   </section>
 
   <section id="tests">
@@ -148,13 +131,7 @@ flowchart LR
     <p class="note" style="margin-top:0">Nothing has been built yet, so nothing has run — this is the planned QA coverage for Phase 0/1.</p>
     <table>
       <thead><tr><th>Test</th><th>Validates</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr><td>Schema completeness</td><td>Every field in the note schema captures what's actually needed</td><td><span class="badge todo">Not started</span></td></tr>
-        <tr><td>Bases view accuracy</td><td>The three vault views return the right notes when filtered/grouped</td><td><span class="badge todo">Not started</span></td></tr>
-        <tr><td>End-to-end ingestion per format</td><td>One real source each for Google Doc, Sheet, Canva, CSV, image, text runs through the pipeline without manual fixes</td><td><span class="badge todo">Not started</span></td></tr>
-        <tr><td>Categorization accuracy</td><td>Rule-matched and AI-fallback categorizations are correct on a sample of 10 sources</td><td><span class="badge todo">Not started</span></td></tr>
-        <tr><td>Dedupe / update-in-place</td><td>Re-submitting the same source updates the existing note instead of duplicating it</td><td><span class="badge todo">Not started</span></td></tr>
-      </tbody>
+      <tbody id="tests-body"></tbody>
     </table>
   </section>
 
@@ -170,16 +147,64 @@ flowchart LR
       <a href="obsidian://open?vault=Asgard&amp;file=NOVA%2FNOVA%20-%20Project%20Hub">Project Hub</a>
       <a href="obsidian://open?vault=Asgard&amp;file=NOVA%2FNOVA%20-%20Project%20Plan">Project Plan</a>
       <a href="obsidian://open?vault=Asgard&amp;file=NOVA%2FNOVA%20-%20Decision%20Log">Decision Log</a>
+      <a href="obsidian://open?vault=Asgard&amp;file=NOVA%2FNOVA%20-%20Design%20Proposal">Design Proposal</a>
     </div>
     <p class="note">These links only work on a computer with the Asgard vault open in Obsidian — they won't resolve for anyone else viewing this page.</p>
   </section>
 
   <footer>
-    N.O.V.A. tracking dashboard · generated 2026-09-21 · source: Documents/Asgard/Asgard/NOVA
+    N.O.V.A. tracking dashboard · source: Documents/Asgard/Asgard/NOVA · this page refreshes its data automatically every 60s while open
   </footer>
 </main>
 <script>
   mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });
+
+  const STATUS_LABEL = { done: 'Done', wip: 'In progress', todo: 'Not started' };
+
+  function renderStats(stats) {
+    document.getElementById('stats-row').innerHTML = stats.map(s =>
+      `<div class="stat"><div class="n">${s.n}</div><div class="l">${s.l}</div></div>`
+    ).join('');
+  }
+
+  function renderTasks(tasks) {
+    document.getElementById('tasks-body').innerHTML = tasks.map(t =>
+      `<tr><td>${t.n}</td><td>${t.task}</td><td>${t.phase}</td><td><span class="badge ${t.status}">${STATUS_LABEL[t.status] || t.status}</span></td></tr>`
+    ).join('');
+  }
+
+  function renderTests(tests) {
+    document.getElementById('tests-body').innerHTML = tests.map(t =>
+      `<tr><td>${t.test}</td><td>${t.validates}</td><td><span class="badge ${t.status}">${STATUS_LABEL[t.status] || t.status}</span></td></tr>`
+    ).join('');
+  }
+
+  function setLiveStatus(updatedIso, ok) {
+    const el = document.getElementById('live-status');
+    if (!ok) { el.textContent = 'Live data unavailable — see note below.'; return; }
+    let when = updatedIso;
+    try { when = new Date(updatedIso).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }); } catch (e) {}
+    el.innerHTML = `<span class="dot"></span>Live — last updated ${when} · auto-refreshes every 60s`;
+  }
+
+  async function loadData() {
+    try {
+      const res = await fetch('data.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      document.getElementById('data-error').style.display = 'none';
+      renderStats(data.stats);
+      renderTasks(data.tasks);
+      renderTests(data.tests);
+      setLiveStatus(data.updated, true);
+    } catch (err) {
+      document.getElementById('data-error').style.display = 'block';
+      setLiveStatus(null, false);
+    }
+  }
+
+  loadData();
+  setInterval(loadData, 60000);
 </script>
 </body>
 </html>
