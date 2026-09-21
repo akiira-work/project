@@ -38,7 +38,7 @@
       { "project": "9YM (9Yin Mobile)", "company": "EXE", "description": "96-slide game overview and competitor analysis (vs Moonlight Blade, Sword of Shadows) with SWOT", "date": "2026-09-10", "format": "canva" },
       { "project": "9YM (9Yin Mobile)", "company": "EXE", "description": "Maps roughly 30 CN-server patches (2015-2019) to a planned TH OBT patch timeline", "date": "2026-09-18", "format": "google-sheet" },
       { "project": "9YM (9Yin Mobile)", "company": "EXE", "description": "Optimistic/Realistic/Pessimistic revenue and UA forecast for 9YM, benchmarked against CABAL Mobile's historical actuals", "date": "2026-09-21", "format": "google-sheet" },
-      { "project": "HOF Company Overview", "company": "HOF", "description": "HOF company profile - CEO bio and social reach, vision/mission, headcount, product list, 2026 campaigns", "date": "2026-09-21", "format": "google-doc" },
+      { "project": "HOF (Company Overview)", "company": "HOF", "description": "HOF company profile - CEO bio and social reach, vision/mission, headcount, product list, 2026 campaigns", "date": "2026-09-21", "format": "google-doc" },
       { "project": "TR (Tales Runner)", "company": "HOF", "description": "Tales Runner product profile - genre, monetization, competitors, launch history, Aug 2026 performance", "date": "2026-09-18", "format": "google-doc" },
       { "project": "WZ (WarZ)", "company": "HOF", "description": "WarZ TH product profile, 9-title competitor comparison, daily DAU/CCU/revenue tracking Jun-Aug 2026", "date": "2026-09-18", "format": "google-sheet" }
     ]
@@ -53,7 +53,7 @@
   "tasks": [
     { "n": 1, "task": "Confirm and connect the vault folder", "phase": "Phase 0", "status": "done" },
     { "n": 2, "task": "Hand-write 3–5 sample notes across a few different pilot projects or clients", "phase": "Phase 0", "status": "done" },
-    { "n": 3, "task": "Build one Bases view over the sample notes, showing date and description columns", "phase": "Phase 0", "status": "todo" },
+    { "n": 3, "task": "Build one Bases view over the sample notes, showing date and description columns", "phase": "Phase 0", "status": "done" },
     { "n": 4, "task": "Confirm the view answers real lookup questions; adjust schema if not", "phase": "Phase 0", "status": "todo" },
     { "n": 5, "task": "Decide what counts as \"key information\" for an image (D-006)", "phase": "Phase 0", "status": "todo" },
     { "n": 6, "task": "Decide note lifecycle / archiving policy (D-007)", "phase": "Phase 0", "status": "todo" },
@@ -89,7 +89,8 @@
     { "id": "D-006", "label": "What counts as “key info” for an image" },
     { "id": "D-007", "label": "Note lifecycle / archiving policy" },
     { "id": "D-008", "label": "Canva text-extraction reliability — resolved: extractable" },
-    { "id": "D-010", "label": "n8n's role, if any" }
+    { "id": "D-010", "label": "n8n's role, if any" },
+    { "id": "D-011", "label": "Company-level vs. project notes — resolved: scope field" }
   ],
   "build_gate": "Phase 1 starts once Phase 0's sample notes confirm the schema, and D-006 / D-007 are resolved."
 }
