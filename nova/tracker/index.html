@@ -55,7 +55,7 @@
     font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
     line-height: 1.55;
   }
-  main { max-width: 920px; margin: 0 auto; padding: 0 20px 80px; }
+  main { max-width: 960px; margin: 0 auto; padding: 0 20px 80px; }
 
   /* ---- hero ---- */
   .hero {
@@ -81,7 +81,7 @@
     padding: 5px 12px; box-shadow: var(--shadow);
   }
   #live-status .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--good); box-shadow: 0 0 0 3px color-mix(in srgb, var(--good) 25%, transparent); }
-  .acronym { font-size: 0.94rem; color: var(--ink-2); max-width: 62ch; }
+  .acronym { font-size: 0.94rem; color: var(--ink-2); max-width: 66ch; }
   .acronym b { color: var(--ink); }
 
   section { margin: 44px 0; }
@@ -168,6 +168,24 @@
   .impact-arrow { color: var(--brand-orange); font-size: 1.1rem; }
   @media (max-width: 560px) { .impact-row { grid-template-columns: 1fr; } .impact-arrow { display: none; } }
 
+  /* ---- gantt ---- */
+  .gantt-wrap { overflow-x: auto; border-radius: 12px; box-shadow: var(--shadow); }
+  .gantt { display: grid; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; min-width: 680px; }
+  .gantt-head, .gantt-row { display: contents; }
+  .gantt-cell { padding: 8px 12px; border-bottom: 1px solid var(--line); display: flex; align-items: center; min-height: 18px; }
+  .gantt-head .gantt-cell {
+    background: var(--surface-2); font-weight: 600; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.03em;
+    flex-direction: column; align-items: flex-start; gap: 2px; padding-top: 10px; padding-bottom: 10px;
+  }
+  .gantt-head .gantt-cell .blurb { font-size: 0.68rem; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--ink-muted); }
+  .gantt-current { color: var(--brand-orange); font-weight: 700; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .gantt-label { font-size: 0.82rem; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .gantt-bar-cell { padding-top: 9px; padding-bottom: 9px; }
+  .gantt-bar { height: 16px; width: 100%; border-radius: 6px; }
+  .gantt-bar.done { background: var(--good); }
+  .gantt-bar.wip { background: var(--warn); }
+  .gantt-bar.todo { background: transparent; border: 1.5px dashed var(--todo-ink); }
+
   .links { display: flex; gap: 10px; flex-wrap: wrap; }
   .links a { display: inline-block; padding: 8px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); color: var(--ink); text-decoration: none; font-size: 0.88rem; box-shadow: var(--shadow); }
   .links a:hover { border-color: var(--brand-orange); color: var(--brand-orange); }
@@ -182,7 +200,7 @@
     <h1>N.O.V.A.</h1>
     <p class="tagline">Tracking dashboard — pipeline design proposal, not yet built</p>
     <p id="live-status"><span class="dot"></span>Loading live status…</p>
-    <div class="acronym"><b>N</b>ormalize · <b>O</b>rganize · <b>V</b>erify · <b>A</b>rchive — turns scattered CABAL source material into structured, categorized Obsidian notes, queryable as a database, feeding Northstar's strategy layer.</div>
+    <div class="acronym"><b>N</b>ormalize · <b>O</b>rganize · <b>V</b>erify · <b>A</b>rchive — turns scattered source material from every project and client you're handed into structured, categorized Obsidian notes, queryable as a database, feeding Northstar's strategy layer.</div>
   </div>
 
   <div id="data-error">Could not load live data.json — showing the page shell only. This happens when the file is opened directly from disk (file://) instead of served over http(s), e.g. via GitHub Pages.</div>
@@ -203,10 +221,10 @@
   <section id="objectives">
     <h2>Objectives</h2>
     <ul class="plain">
-      <li>Give the team one place to find everything about a CABAL project instead of hunting across Drive, Canva, and chat threads</li>
-      <li>Preserve institutional knowledge as campaigns wrap and people rotate off them</li>
+      <li>Give the team one place to find everything about a project instead of hunting across Drive, Canva, and chat threads — whichever client or campaign it's for</li>
+      <li>Preserve institutional knowledge as projects wrap, clients rotate, or people move on</li>
       <li>Cut the time to compile a project's key facts for planning or handoff from hours to minutes</li>
-      <li>Feed Northstar's strategy layer with clean, structured, current source material</li>
+      <li>Feed Northstar's strategy layer with clean, structured, current source material, across every project at once</li>
     </ul>
   </section>
 
@@ -215,10 +233,11 @@
     <ul class="plain">
       <li>Multi-format ingestion: Google Docs, Sheets, Canva slide decks, CSVs, plain text, images</li>
       <li>Automatic key-fact extraction and summarization per source</li>
-      <li>Categorization by CABAL project and content type — rules first, AI fallback flagged for review</li>
+      <li>Categorization by project, client, and content type — rules first, AI fallback flagged for review</li>
       <li>Structured Obsidian notes queryable as a database via Bases/Dataview, no separate database engine</li>
       <li>Dedupe and update-in-place instead of duplicate notes for the same source</li>
       <li>A Needs Review view that surfaces anything AI-categorized before it's trusted</li>
+      <li>One vault, many projects — new clients or campaigns are new categories, not new tools</li>
     </ul>
   </section>
 
@@ -238,7 +257,7 @@
       <div class="flow-step"><div class="num">3</div><div class="t">Extract key info</div><div class="d">Claude summarizes and pulls out the facts that matter</div></div>
       <div class="flow-arrow">→</div>
       <div class="flow-branch">
-        <div class="flow-step"><div class="num">4a</div><div class="t">Rule match</div><div class="d">Known Drive/Canva location → categorize by rule</div></div>
+        <div class="flow-step"><div class="num">4a</div><div class="t">Rule match</div><div class="d">Known project/client location → categorize by rule</div></div>
         <div class="flow-step"><div class="num">4b</div><div class="t">AI fallback</div><div class="d">No rule match → AI categorizes, flagged needs-review</div></div>
       </div>
       <div class="flow-arrow">→</div>
@@ -252,6 +271,12 @@
     <h2>Projected Productivity Impact</h2>
     <p class="impact-note" id="impact-note"></p>
     <div class="impact-grid" id="impact-grid"></div>
+  </section>
+
+  <section id="timeline">
+    <h2>Timeline by Phase</h2>
+    <p class="note" style="margin-top:0">Phases, not calendar dates — this proposal has no build schedule yet, so tasks are sequenced by phase rather than by date. The highlighted phase below is where work currently stands.</p>
+    <div class="gantt-wrap"><div class="gantt" id="gantt-grid"></div></div>
   </section>
 
   <section id="tasks">
@@ -301,6 +326,8 @@
     todo: ''
   };
   const WEIGHT = { done: 1, wip: 0.5, todo: 0 };
+
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
 
   function renderStats(stats) {
     document.getElementById('stats-row').innerHTML = stats.map(s =>
@@ -356,6 +383,41 @@
     `).join('');
   }
 
+  function renderGantt(tasks, phases) {
+    const grid = document.getElementById('gantt-grid');
+    if (!phases || !phases.length) { grid.innerHTML = ''; return; }
+    const phaseKeys = phases.map(p => p.key);
+
+    // The current phase: the earliest phase (in order) that still has an unfinished task.
+    let currentPhase = null;
+    for (const key of phaseKeys) {
+      const inPhase = tasks.filter(t => t.phase === key);
+      if (inPhase.some(t => t.status !== 'done')) { currentPhase = key; break; }
+    }
+
+    grid.style.gridTemplateColumns = `220px repeat(${phases.length}, minmax(100px, 1fr))`;
+
+    let html = '<div class="gantt-head"><div class="gantt-cell"></div>';
+    phases.forEach(p => {
+      html += `<div class="gantt-cell"><span>${esc(p.label)}${p.key === currentPhase ? ' <span class="gantt-current">current</span>' : ''}</span><span class="blurb">${esc(p.blurb)}</span></div>`;
+    });
+    html += '</div>';
+
+    tasks.forEach(t => {
+      html += '<div class="gantt-row">';
+      html += `<div class="gantt-cell gantt-label" title="${esc(t.task)}">#${t.n} ${esc(t.task)}</div>`;
+      phaseKeys.forEach(key => {
+        if (key === t.phase) {
+          html += `<div class="gantt-cell gantt-bar-cell"><div class="gantt-bar ${t.status}" title="${esc(t.task)} — ${STATUS_LABEL[t.status]}"></div></div>`;
+        } else {
+          html += '<div class="gantt-cell"></div>';
+        }
+      });
+      html += '</div>';
+    });
+    grid.innerHTML = html;
+  }
+
   function setLiveStatus(updatedIso, ok) {
     const el = document.getElementById('live-status');
     if (!ok) { el.innerHTML = '<span class="dot"></span>Live data unavailable — see note below.'; return; }
@@ -376,6 +438,7 @@
       renderTests(data.tests);
       renderIntegrations(data.integrations);
       renderImpact(data.impact);
+      renderGantt(data.tasks, data.phases);
       setLiveStatus(data.updated, true);
     } catch (err) {
       document.getElementById('data-error').style.display = 'block';
