@@ -54,9 +54,9 @@
     { "n": 1, "task": "Confirm and connect the vault folder", "phase": "Phase 0", "status": "done" },
     { "n": 2, "task": "Hand-write 3–5 sample notes across a few different pilot projects or clients", "phase": "Phase 0", "status": "done" },
     { "n": 3, "task": "Build one Bases view over the sample notes, showing date and description columns", "phase": "Phase 0", "status": "done" },
-    { "n": 4, "task": "Confirm the view answers real lookup questions; adjust schema if not", "phase": "Phase 0", "status": "todo" },
-    { "n": 5, "task": "Decide what counts as \"key information\" for an image (D-006)", "phase": "Phase 0", "status": "todo" },
-    { "n": 6, "task": "Decide note lifecycle / archiving policy (D-007)", "phase": "Phase 0", "status": "todo" },
+    { "n": 4, "task": "Confirm the view answers real lookup questions; adjust schema if not", "phase": "Phase 0", "status": "done" },
+    { "n": 5, "task": "Decide what counts as \"key information\" for an image (D-006)", "phase": "Phase 0", "status": "done" },
+    { "n": 6, "task": "Decide note lifecycle / archiving policy (D-007)", "phase": "Phase 0", "status": "done" },
     { "n": 7, "task": "Set up the Inbox convention (folder or note), capturing project name and a short description at intake", "phase": "Phase 1", "status": "todo" },
     { "n": 8, "task": "Draft and finalize the rule table for known Drive/Canva locations, per company and project", "phase": "Phase 1", "status": "wip" },
     { "n": 9, "task": "Test Canva connector text extraction on one real client design (D-008)", "phase": "Phase 1", "status": "done" },
@@ -86,11 +86,11 @@
     ]
   },
   "decisions": [
-    { "id": "D-006", "label": "What counts as “key info” for an image" },
-    { "id": "D-007", "label": "Note lifecycle / archiving policy" },
+    { "id": "D-006", "label": "Image key info — resolved: on-image text + basic context" },
+    { "id": "D-007", "label": "Note lifecycle — resolved: stays in place, indefinitely" },
     { "id": "D-008", "label": "Canva text-extraction reliability — resolved: extractable" },
     { "id": "D-010", "label": "n8n's role, if any" },
     { "id": "D-011", "label": "Company-level vs. project notes — resolved: scope field" }
   ],
-  "build_gate": "Phase 1 starts once Phase 0's sample notes confirm the schema, and D-006 / D-007 are resolved."
+  "build_gate": "Cleared — Phase 0's sample notes and Bases view confirmed the schema, and D-006 / D-007 / D-008 are resolved. Phase 1 can start."
 }
