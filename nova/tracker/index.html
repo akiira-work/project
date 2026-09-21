@@ -142,6 +142,7 @@
 
   table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; font-size: 0.86rem; box-shadow: var(--shadow); }
   th, td { text-align: left; padding: 8px 11px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .empty-row { text-align: center; color: var(--ink-muted); font-style: italic; padding: 16px; }
   th { background: var(--surface-2); color: var(--ink); font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.03em; }
   tr:last-child td { border-bottom: none; }
 
@@ -255,6 +256,14 @@
     <div class="card example-card" id="example-card"></div>
   </section>
 
+  <section id="sources">
+    <h2>Sources Collected</h2>
+    <table>
+      <thead><tr><th>Project</th><th>Company</th><th>Description</th><th>Date</th><th>Format</th></tr></thead>
+      <tbody id="sources-body"></tbody>
+    </table>
+  </section>
+
   <section id="integrations">
     <h2>Integrations</h2>
     <div class="integrations" id="integrations-grid"></div>
@@ -263,7 +272,7 @@
   <section id="flow">
     <h2>Workflow</h2>
     <div class="flow">
-      <div class="flow-step"><div class="num">1</div><div class="t">Inbox</div><div class="d">Drop file or link</div></div>
+      <div class="flow-step"><div class="num">1</div><div class="t">Inbox</div><div class="d">File/link + project + description</div></div>
       <div class="flow-arrow">→</div>
       <div class="flow-step"><div class="num">2</div><div class="t">Fetch</div><div class="d">Pull content by format</div></div>
       <div class="flow-arrow">→</div>
@@ -403,6 +412,17 @@
     `;
   }
 
+  function renderSources(sources) {
+    const body = document.getElementById('sources-body');
+    if (!sources.items.length) {
+      body.innerHTML = `<tr><td colspan="5" class="empty-row">${esc(sources.note)}</td></tr>`;
+      return;
+    }
+    body.innerHTML = sources.items.map(s =>
+      `<tr><td>${esc(s.project)}</td><td>${esc(s.company)}</td><td>${esc(s.description)}</td><td>${esc(s.date)}</td><td>${esc(s.format)}</td></tr>`
+    ).join('');
+  }
+
   function renderIntegrations(items) {
     document.getElementById('integrations-grid').innerHTML = items.map(i => `
       <div class="card integration-card">
@@ -493,6 +513,7 @@
       renderObjectives(data.objectives);
       renderFeatures(data.features);
       renderQuickstart(data.quickstart);
+      renderSources(data.sources);
       renderIntegrations(data.integrations);
       renderTasks(data.tasks);
       renderTests(data.tests);

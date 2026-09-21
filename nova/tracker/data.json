@@ -19,16 +19,21 @@
     "No separate database — just the vault",
     "Dedupe: update in place, not duplicate",
     "Needs-Review queue for AI calls",
-    "One vault, many companies & projects"
+    "One vault, many companies & projects",
+    "Project name + description typed in at intake"
   ],
   "quickstart": {
     "steps": [
-      { "n": 1, "label": "Drop", "sub": "Paste a link or file into the Inbox" },
+      { "n": 1, "label": "Drop", "sub": "Link/file + project name + short description into the Inbox" },
       { "n": 2, "label": "Process", "sub": "Ask Claude to run the Inbox" },
       { "n": 3, "label": "Find it", "sub": "Open the project's view in Obsidian" }
     ],
-    "example_input": "Google Doc link pasted into Inbox: “Client X — Q1 Campaign Brief”",
+    "example_input": "Google Doc link + project “Q1 Campaign” + description “Client X campaign brief draft”, pasted into Inbox",
     "example_output": "Note filed: company Client X · project Q1 Campaign · category Campaign Brief · 3 key facts"
+  },
+  "sources": {
+    "note": "No sources captured yet — the first entries land once Phase 0's sample notes are written.",
+    "items": []
   },
   "integrations": [
     { "name": "Google Drive", "role": "Docs & Sheets, read directly", "kind": "Source", "status": "connected" },
@@ -40,11 +45,11 @@
   "tasks": [
     { "n": 1, "task": "Confirm and connect the vault folder", "phase": "Phase 0", "status": "done" },
     { "n": 2, "task": "Hand-write 3–5 sample notes across a few different pilot projects or clients", "phase": "Phase 0", "status": "todo" },
-    { "n": 3, "task": "Build one Bases view over the sample notes", "phase": "Phase 0", "status": "todo" },
+    { "n": 3, "task": "Build one Bases view over the sample notes, showing date and description columns", "phase": "Phase 0", "status": "todo" },
     { "n": 4, "task": "Confirm the view answers real lookup questions; adjust schema if not", "phase": "Phase 0", "status": "todo" },
     { "n": 5, "task": "Decide what counts as \"key information\" for an image (D-006)", "phase": "Phase 0", "status": "todo" },
     { "n": 6, "task": "Decide note lifecycle / archiving policy (D-007)", "phase": "Phase 0", "status": "todo" },
-    { "n": 7, "task": "Set up the Inbox convention (folder or note)", "phase": "Phase 1", "status": "todo" },
+    { "n": 7, "task": "Set up the Inbox convention (folder or note), capturing project name and a short description at intake", "phase": "Phase 1", "status": "todo" },
     { "n": 8, "task": "Draft and finalize the rule table for known Drive/Canva locations, per company and project", "phase": "Phase 1", "status": "wip" },
     { "n": 9, "task": "Test Canva connector text extraction on one real client design (D-008)", "phase": "Phase 1", "status": "todo" },
     { "n": 10, "task": "Run the pipeline manually end-to-end on one source per format", "phase": "Phase 1", "status": "todo" },
@@ -53,7 +58,8 @@
     { "n": 13, "task": "Build the rule table as an editable config file", "phase": "Phase 2", "status": "todo" },
     { "n": 14, "task": "Set up a Cowork scheduled task fired on demand (optional)", "phase": "Phase 2", "status": "todo" },
     { "n": 15, "task": "Evaluate whether volume justifies a standalone script", "phase": "Phase 3", "status": "todo" },
-    { "n": 16, "task": "Build standalone script calling Google/Canva/Claude APIs directly (only if triggered)", "phase": "Phase 3", "status": "todo" }
+    { "n": 16, "task": "Build standalone script calling Google/Canva/Claude APIs directly (only if triggered)", "phase": "Phase 3", "status": "todo" },
+    { "n": 17, "task": "Add a Sources view to the nova-tracker website (project, description, date, format)", "phase": "Phase 2", "status": "todo" }
   ],
   "tests": [
     { "test": "Schema completeness", "validates": "Every field captures what's actually needed", "status": "todo" },
