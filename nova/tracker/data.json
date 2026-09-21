@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-21T00:00:00Z",
+  "updated": "2026-09-22T00:00:00Z",
   "phases": [
     { "key": "Phase 0", "label": "Phase 0", "blurb": "Prove the schema by hand" },
     { "key": "Phase 1", "label": "Phase 1", "blurb": "Run it manually, end to end" },
@@ -57,12 +57,12 @@
     { "n": 4, "task": "Confirm the view answers real lookup questions; adjust schema if not", "phase": "Phase 0", "status": "done" },
     { "n": 5, "task": "Decide what counts as \"key information\" for an image (D-006)", "phase": "Phase 0", "status": "done" },
     { "n": 6, "task": "Decide note lifecycle / archiving policy (D-007)", "phase": "Phase 0", "status": "done" },
-    { "n": 7, "task": "Set up the Inbox convention (folder or note), capturing project name and a short description at intake", "phase": "Phase 1", "status": "todo" },
-    { "n": 8, "task": "Draft and finalize the rule table for known Drive/Canva locations, per company and project", "phase": "Phase 1", "status": "wip" },
+    { "n": 7, "task": "Set up the Inbox convention (folder or note), capturing project name and a short description at intake", "phase": "Phase 1", "status": "done" },
+    { "n": 8, "task": "Draft and finalize the rule table for known Drive/Canva locations, per company and project", "phase": "Phase 1", "status": "done" },
     { "n": 9, "task": "Test Canva connector text extraction on one real client design (D-008)", "phase": "Phase 1", "status": "done" },
-    { "n": 10, "task": "Run the pipeline manually end-to-end on one source per format", "phase": "Phase 1", "status": "todo" },
-    { "n": 11, "task": "Review and correct AI-inferred categorizations from the trial run", "phase": "Phase 1", "status": "todo" },
-    { "n": 12, "task": "Turn the pipeline into a repeatable checklist or prompt", "phase": "Phase 2", "status": "todo" },
+    { "n": 10, "task": "Run the pipeline manually end-to-end on one source per format", "phase": "Phase 1", "status": "wip" },
+    { "n": 11, "task": "Review and correct AI-inferred categorizations from the trial run", "phase": "Phase 1", "status": "done" },
+    { "n": 12, "task": "Turn the pipeline into a repeatable checklist or prompt", "phase": "Phase 2", "status": "done" },
     { "n": 13, "task": "Build the rule table as an editable config file", "phase": "Phase 2", "status": "todo" },
     { "n": 14, "task": "Set up a Cowork scheduled task fired on demand (optional)", "phase": "Phase 2", "status": "todo" },
     { "n": 15, "task": "Evaluate whether volume justifies a standalone script", "phase": "Phase 3", "status": "todo" },
@@ -90,7 +90,8 @@
     { "id": "D-007", "label": "Note lifecycle — resolved: stays in place, indefinitely" },
     { "id": "D-008", "label": "Canva text-extraction reliability — resolved: extractable" },
     { "id": "D-010", "label": "n8n's role, if any" },
-    { "id": "D-011", "label": "Company-level vs. project notes — resolved: scope field" }
+    { "id": "D-011", "label": "Company-level vs. project notes — resolved: scope field" },
+    { "id": "D-012", "label": "Canva ≠ automatic Creative Asset — resolved: narrowed the rule" }
   ],
-  "build_gate": "Cleared — Phase 0's sample notes and Bases view confirmed the schema, and D-006 / D-007 / D-008 are resolved. Phase 1 can start."
+  "build_gate": "Cleared — Phase 0's sample notes and Bases view confirmed the schema, and D-006 / D-007 / D-008 are resolved. Phase 1's Inbox, rule table, and checklist are built; only a real CSV/image/text source (task #10) is left before Phase 1 is fully exercised."
 }
