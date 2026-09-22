@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-22T04:00:00Z",
+  "updated": "2026-09-22T05:00:00Z",
   "phases": [
     { "key": "Phase 0", "label": "Phase 0", "blurb": "Prove the schema by hand" },
     { "key": "Phase 1", "label": "Phase 1", "blurb": "Run it manually, end to end" },
@@ -73,7 +73,8 @@
     { "n": 17, "task": "Add a Sources view to the nova-tracker website (project, description, date, format)", "phase": "Phase 2", "status": "done" },
     { "n": 18, "task": "Build a local web app to browse Sources and submit to the Inbox (user-requested, D-015)", "phase": "Phase 2", "status": "done" },
     { "n": 19, "task": "Usability-test the app as a first-time user; add a no-terminal launcher (D-017)", "phase": "Phase 2", "status": "done" },
-    { "n": 20, "task": "Add clickable detail/project pages, an in-app Needs Review action, and local search (user-requested, D-018)", "phase": "Phase 2", "status": "done" }
+    { "n": 20, "task": "Add clickable detail/project pages, an in-app Needs Review action, and local search (user-requested, D-018)", "phase": "Phase 2", "status": "done" },
+    { "n": 21, "task": "Render Key Facts as tables/charts, not just long bullets (user-requested, D-019)", "phase": "Phase 2", "status": "done" }
   ],
   "tests": [
     { "test": "Schema completeness", "validates": "Every field captures what's actually needed", "status": "todo" },
@@ -103,7 +104,8 @@
     { "id": "D-015", "label": "Local web app built (browse + submit) — doesn't process sources itself" },
     { "id": "D-016", "label": "Found + fixed a gray-matter parse-cache bug while building the app" },
     { "id": "D-017", "label": "App usability-tested as a first-time user; no-terminal launcher added" },
-    { "id": "D-018", "label": "Detail/project pages, in-app review action, local search (not live AI)" }
+    { "id": "D-018", "label": "Detail/project pages, in-app review action, local search (not live AI)" },
+    { "id": "D-019", "label": "Key Facts render as tables/charts, not just long bullets" }
   ],
   "build_gate": "Phase 1 complete — all 6 source formats have run through the pipeline at least once (CSV/image/text via disposable test fixtures on 2026-09-22, pending a real source of each), dedupe/update-in-place confirmed, and the 7 pilot notes reviewed. Phase 2 (semi-automate) underway: checklist and machine-readable rule table done; a Cowork scheduled task (task #14, optional) is the only thing left."
 }
