@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-22T07:00:00Z",
+  "updated": "2026-09-22T08:00:00Z",
   "phases": [
     { "key": "Phase 0", "label": "Phase 0", "blurb": "Prove the schema by hand" },
     { "key": "Phase 1", "label": "Phase 1", "blurb": "Run it manually, end to end" },
@@ -76,7 +76,8 @@
     { "n": 20, "task": "Add clickable detail/project pages, an in-app Needs Review action, and local search (user-requested, D-018)", "phase": "Phase 2", "status": "done" },
     { "n": 21, "task": "Render Key Facts as tables/charts, not just long bullets (user-requested, D-019)", "phase": "Phase 2", "status": "done" },
     { "n": 22, "task": "Add a title field, prepared-in-advance extraction templates, and grouped Key Facts (user-requested, D-020)", "phase": "Phase 2", "status": "done" },
-    { "n": 23, "task": "Self-service project/company management, optional intake fields, company rollup + Dashboard shortcuts (user-requested, D-021)", "phase": "Phase 2", "status": "done" }
+    { "n": 23, "task": "Self-service project/company management, optional intake fields, company rollup + Dashboard shortcuts (user-requested, D-021)", "phase": "Phase 2", "status": "done" },
+    { "n": 24, "task": "Retrofit the remaining 7 EXE/HOF notes with titles + templated Key Facts (D-022)", "phase": "Phase 2", "status": "done" }
   ],
   "tests": [
     { "test": "Schema completeness", "validates": "Every field captures what's actually needed", "status": "todo" },
@@ -109,7 +110,8 @@
     { "id": "D-018", "label": "Detail/project pages, in-app review action, local search (not live AI)" },
     { "id": "D-019", "label": "Key Facts render as tables/charts, not just long bullets" },
     { "id": "D-020", "label": "Title field, prepared-in-advance templates, grouped Key Facts" },
-    { "id": "D-021", "label": "Self-service project/company management; optional intake fields" }
+    { "id": "D-021", "label": "Self-service project/company management; optional intake fields" },
+    { "id": "D-022", "label": "All 10 notes retrofitted with titles + templated, grouped Key Facts" }
   ],
   "build_gate": "Phase 1 complete — all 6 source formats have run through the pipeline at least once (CSV/image/text via disposable test fixtures on 2026-09-22, pending a real source of each), dedupe/update-in-place confirmed, and the 7 pilot notes reviewed. Phase 2 (semi-automate) underway: checklist and machine-readable rule table done; a Cowork scheduled task (task #14, optional) is the only thing left."
 }
