@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-23T16:00:00Z",
+  "updated": "2026-09-23T18:00:00Z",
   "phases": [
     { "key": "Phase 0", "label": "Phase 0", "blurb": "Prove the schema by hand" },
     { "key": "Phase 1", "label": "Phase 1", "blurb": "Run it manually, end to end" },
@@ -83,7 +83,8 @@
     { "n": 26, "task": "Independent Company/Project selects on Inbox; honest Pending → Filed progress tracker (user-requested, D-024)", "phase": "Phase 2", "status": "done" },
     { "n": 27, "task": "Re-mine under-extracted sources for real strategic depth, compact and precise (user-requested, D-025)", "phase": "Phase 2", "status": "done" },
     { "n": 28, "task": "Fix missing/buried headline financial numbers (revenue totals, marketing budget); add a standing coverage rule (user-requested, D-026)", "phase": "Phase 2", "status": "done" },
-    { "n": 29, "task": "Redesign the project rollup as an executive brief + topic drill-down menu (user-requested, D-027)", "phase": "Phase 2", "status": "done" }
+    { "n": 29, "task": "Redesign the project rollup as an executive brief + topic drill-down menu (user-requested, D-027)", "phase": "Phase 2", "status": "done" },
+    { "n": 30, "task": "Extend executive brief/topic drill-down to the Company rollup; standardize drifted heading names vault-wide (D-028)", "phase": "Phase 2", "status": "done" }
   ],
   "tests": [
     { "test": "Schema completeness", "validates": "Every field captures what's actually needed", "status": "todo" },
@@ -122,7 +123,8 @@
     { "id": "D-024", "label": "Independent Company/Project selects; honest Pending → Filed progress tracker, not a fabricated AI-learning %" },
     { "id": "D-025", "label": "Re-mined 3 under-extracted sources — the gap was unread source material, not the templates" },
     { "id": "D-026", "label": "Headline revenue/budget totals were buried or dropped — reconciled 9YM's model, added a standing coverage rule" },
-    { "id": "D-027", "label": "Project rollup redesigned as an executive brief + topic drill-down (Revenue, Strategy, Product Info, etc.)" }
+    { "id": "D-027", "label": "Project rollup redesigned as an executive brief + topic drill-down (Revenue, Strategy, Product Info, etc.)" },
+    { "id": "D-028", "label": "Extended brief/topic view to Company rollup; fixed 6 near-duplicate heading spellings vault-wide" }
   ],
   "build_gate": "Phase 1 complete — all 6 source formats have run through the pipeline at least once (CSV/image/text via disposable test fixtures on 2026-09-22, pending a real source of each), dedupe/update-in-place confirmed, and the 7 pilot notes reviewed. Phase 2 (semi-automate) underway: checklist and machine-readable rule table done; a Cowork scheduled task (task #14, optional) is the only thing left."
 }
