@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-24T09:00:00Z",
+  "updated": "2026-09-23T18:00:00Z",
   "phases": [
     { "key": "Phase 0", "label": "Phase 0", "blurb": "Prove the schema by hand" },
     { "key": "Phase 1", "label": "Phase 1", "blurb": "Run it manually, end to end" },
@@ -24,7 +24,8 @@
     "Per-project executive brief + topic drill-down",
     "Automatic Inbox processing (no manual \"process the inbox\" prompt needed)",
     "Working Links per project — quick-reference URLs, never fetched or summarized",
-    "Live agent-activity indicator — real status while the vault is being read/written"
+    "Live agent-activity indicator — real status while the vault is being read/written",
+    "Ask AI — real Gemini-powered chat, scoped per project, opt-in via a free API key"
   ],
   "quickstart": {
     "steps": [
@@ -95,7 +96,7 @@
     { "n": 35, "task": "Workflow/process/presentation audit for professionalism at scale (user-requested, D-034)", "phase": "Phase 2", "status": "done" },
     { "n": 36, "task": "Working Links: plain per-project reference URLs, outside the pipeline (user-requested, D-035)", "phase": "Phase 2", "status": "done" },
     { "n": 37, "task": "Live \"agent working\" indicator, fed by a real status endpoint (user-requested, D-036)", "phase": "Phase 2", "status": "done" },
-    { "n": 38, "task": "Per-project AI chat agents — needs an API key/billing decision", "phase": "Phase 3", "status": "todo" },
+    { "n": 38, "task": "Per-project AI chat agents — built on Gemini's free tier (user-requested, D-036 update)", "phase": "Phase 2", "status": "done" },
     { "n": 39, "task": "Standalone company registration; dedicated Companies & Projects section (user-requested, D-037)", "phase": "Phase 2", "status": "done" }
   ],
   "tests": [
@@ -143,7 +144,7 @@
     { "id": "D-032", "label": "Visual identity leans into \"Nova\"/AI-product design language — gradient wordmark, sparkle logomark, glow states" },
     { "id": "D-034", "label": "Audit: closed the Needs Review backlog, fixed 5 docs' stale process language, fixed a real tracker badge bug" },
     { "id": "D-035", "label": "Working Links: plain per-project reference URLs, added via the Inbox tab (same shape as Sources), shown per-project" },
-    { "id": "D-036", "label": "Live agent-activity indicator (real, self-clearing); per-project AI chat deferred pending an API-cost decision" },
+    { "id": "D-036", "label": "Live agent-activity indicator (real, self-clearing); per-project AI chat now built on Gemini's free tier, context-scoped per project" },
     { "id": "D-037", "label": "Companies can be registered standalone, ahead of their first project — one dedicated add-forms section" }
   ],
   "build_gate": "Phase 1 complete — all 6 source formats have run through the pipeline at least once (CSV/image/text via disposable test fixtures on 2026-09-22, pending a real source of each), dedupe/update-in-place confirmed, and the 7 pilot notes reviewed. Phase 2 (semi-automate) underway: checklist and machine-readable rule table done; a Cowork scheduled task (task #14, optional) is the only thing left."
