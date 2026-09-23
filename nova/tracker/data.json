@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-24T03:00:00Z",
+  "updated": "2026-09-24T05:00:00Z",
   "phases": [
     { "key": "Phase 0", "label": "Phase 0", "blurb": "Prove the schema by hand" },
     { "key": "Phase 1", "label": "Phase 1", "blurb": "Run it manually, end to end" },
@@ -138,7 +138,7 @@
     { "id": "D-031", "label": "Company/project group headers collapsible, state persisted — scales as more projects are added" },
     { "id": "D-032", "label": "Visual identity leans into \"Nova\"/AI-product design language — gradient wordmark, sparkle logomark, glow states" },
     { "id": "D-034", "label": "Audit: closed the Needs Review backlog, fixed 5 docs' stale process language, fixed a real tracker badge bug" },
-    { "id": "D-035", "label": "Working Links: plain per-project reference URLs (Drive, Figma, dashboards) — never fetched or summarized" }
+    { "id": "D-035", "label": "Working Links: plain per-project reference URLs, added via the Inbox tab (same shape as Sources), shown per-project" }
   ],
   "build_gate": "Phase 1 complete — all 6 source formats have run through the pipeline at least once (CSV/image/text via disposable test fixtures on 2026-09-22, pending a real source of each), dedupe/update-in-place confirmed, and the 7 pilot notes reviewed. Phase 2 (semi-automate) underway: checklist and machine-readable rule table done; a Cowork scheduled task (task #14, optional) is the only thing left."
 }
