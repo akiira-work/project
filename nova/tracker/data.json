@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-23T21:00:00Z",
+  "updated": "2026-09-23T23:00:00Z",
   "phases": [
     { "key": "Phase 0", "label": "Phase 0", "blurb": "Prove the schema by hand" },
     { "key": "Phase 1", "label": "Phase 1", "blurb": "Run it manually, end to end" },
@@ -87,7 +87,9 @@
     { "n": 29, "task": "Redesign the project rollup as an executive brief + topic drill-down menu (user-requested, D-027)", "phase": "Phase 2", "status": "done" },
     { "n": 30, "task": "Extend executive brief/topic drill-down to the Company rollup; standardize drifted heading names vault-wide (D-028)", "phase": "Phase 2", "status": "done" },
     { "n": 31, "task": "Automatic Inbox processing via a durable scheduled task, no API key needed (user-requested, D-029)", "phase": "Phase 2", "status": "done" },
-    { "n": 32, "task": "Redesign the app as a sidebar-nav shell; show the N.O.V.A. acronym; refresh colors/typography/spacing (user-requested, D-030)", "phase": "Phase 2", "status": "done" }
+    { "n": 32, "task": "Redesign the app as a sidebar-nav shell; show the N.O.V.A. acronym; refresh colors/typography/spacing (user-requested, D-030)", "phase": "Phase 2", "status": "done" },
+    { "n": 33, "task": "Collapsible company/project group headers, state persisted (user-requested, D-031)", "phase": "Phase 2", "status": "done" },
+    { "n": 34, "task": "Visual identity leans into \"Nova\"/AI-product design language (user-requested, D-032)", "phase": "Phase 2", "status": "done" }
   ],
   "tests": [
     { "test": "Schema completeness", "validates": "Every field captures what's actually needed", "status": "todo" },
@@ -129,7 +131,9 @@
     { "id": "D-027", "label": "Project rollup redesigned as an executive brief + topic drill-down (Revenue, Strategy, Product Info, etc.)" },
     { "id": "D-028", "label": "Extended brief/topic view to Company rollup; fixed 6 near-duplicate heading spellings vault-wide" },
     { "id": "D-029", "label": "Automatic Inbox processing via a durable scheduled task (15-min check) — no API key, no per-call cost" },
-    { "id": "D-030", "label": "App redesigned as a sidebar-nav shell; N.O.V.A. acronym always visible; refreshed colors/typography" }
+    { "id": "D-030", "label": "App redesigned as a sidebar-nav shell; N.O.V.A. acronym always visible; refreshed colors/typography" },
+    { "id": "D-031", "label": "Company/project group headers collapsible, state persisted — scales as more projects are added" },
+    { "id": "D-032", "label": "Visual identity leans into \"Nova\"/AI-product design language — gradient wordmark, sparkle logomark, glow states" }
   ],
   "build_gate": "Phase 1 complete — all 6 source formats have run through the pipeline at least once (CSV/image/text via disposable test fixtures on 2026-09-22, pending a real source of each), dedupe/update-in-place confirmed, and the 7 pilot notes reviewed. Phase 2 (semi-automate) underway: checklist and machine-readable rule table done; a Cowork scheduled task (task #14, optional) is the only thing left."
 }
