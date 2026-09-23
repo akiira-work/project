@@ -27,7 +27,7 @@
   "quickstart": {
     "steps": [
       { "n": 1, "label": "Drop", "sub": "Link/file + project name + short description into the Inbox" },
-      { "n": 2, "label": "Process", "sub": "Ask Claude to run the Inbox" },
+      { "n": 2, "label": "Process", "sub": "Automatic within 15 min — or ask Claude to run it now" },
       { "n": 3, "label": "Find it", "sub": "Open the project's view in Obsidian" }
     ],
     "example_input": "Google Doc link + project “Q1 Campaign” + description “Client X campaign brief draft”, pasted into Inbox",
@@ -53,7 +53,7 @@
     { "name": "Canva", "role": "Slide decks & designs (text extraction confirmed — D-008)", "kind": "Source", "status": "connected" },
     { "name": "Obsidian", "role": "The one vault for everything", "kind": "Destination", "status": "connected" },
     { "name": "Claude / Cowork", "role": "Extraction, summary, categorization", "kind": "Intelligence", "status": "connected" },
-    { "name": "n8n", "role": "Inbox automation — role undefined (D-010)", "kind": "Automation", "status": "planned" }
+    { "name": "n8n", "role": "Not needed — a Claude scheduled task covers Inbox automation instead (D-010/D-029)", "kind": "Automation", "status": "not-needed" }
   ],
   "tasks": [
     { "n": 1, "task": "Confirm and connect the vault folder", "phase": "Phase 0", "status": "done" },
@@ -89,7 +89,8 @@
     { "n": 31, "task": "Automatic Inbox processing via a durable scheduled task, no API key needed (user-requested, D-029)", "phase": "Phase 2", "status": "done" },
     { "n": 32, "task": "Redesign the app as a sidebar-nav shell; show the N.O.V.A. acronym; refresh colors/typography/spacing (user-requested, D-030)", "phase": "Phase 2", "status": "done" },
     { "n": 33, "task": "Collapsible company/project group headers, state persisted (user-requested, D-031)", "phase": "Phase 2", "status": "done" },
-    { "n": 34, "task": "Visual identity leans into \"Nova\"/AI-product design language (user-requested, D-032)", "phase": "Phase 2", "status": "done" }
+    { "n": 34, "task": "Visual identity leans into \"Nova\"/AI-product design language (user-requested, D-032)", "phase": "Phase 2", "status": "done" },
+    { "n": 35, "task": "Workflow/process/presentation audit for professionalism at scale (user-requested, D-034)", "phase": "Phase 2", "status": "done" }
   ],
   "tests": [
     { "test": "Schema completeness", "validates": "Every field captures what's actually needed", "status": "todo" },
@@ -111,7 +112,7 @@
     { "id": "D-006", "label": "Image key info — resolved: on-image text + basic context" },
     { "id": "D-007", "label": "Note lifecycle — resolved: stays in place, indefinitely" },
     { "id": "D-008", "label": "Canva text-extraction reliability — resolved: extractable" },
-    { "id": "D-010", "label": "n8n's role, if any" },
+    { "id": "D-010", "label": "n8n's role — resolved: not needed, a Claude scheduled task covers it (see D-029)" },
     { "id": "D-011", "label": "Company-level vs. project notes — resolved: scope field" },
     { "id": "D-012", "label": "Canva ≠ automatic Creative Asset — resolved: narrowed the rule" },
     { "id": "D-013", "label": "Added \"webpage\" as a source_type — resolved" },
@@ -133,7 +134,8 @@
     { "id": "D-029", "label": "Automatic Inbox processing via a durable scheduled task (15-min check) — no API key, no per-call cost" },
     { "id": "D-030", "label": "App redesigned as a sidebar-nav shell; N.O.V.A. acronym always visible; refreshed colors/typography" },
     { "id": "D-031", "label": "Company/project group headers collapsible, state persisted — scales as more projects are added" },
-    { "id": "D-032", "label": "Visual identity leans into \"Nova\"/AI-product design language — gradient wordmark, sparkle logomark, glow states" }
+    { "id": "D-032", "label": "Visual identity leans into \"Nova\"/AI-product design language — gradient wordmark, sparkle logomark, glow states" },
+    { "id": "D-034", "label": "Audit: closed the Needs Review backlog, fixed 5 docs' stale process language, fixed a real tracker badge bug" }
   ],
   "build_gate": "Phase 1 complete — all 6 source formats have run through the pipeline at least once (CSV/image/text via disposable test fixtures on 2026-09-22, pending a real source of each), dedupe/update-in-place confirmed, and the 7 pilot notes reviewed. Phase 2 (semi-automate) underway: checklist and machine-readable rule table done; a Cowork scheduled task (task #14, optional) is the only thing left."
 }

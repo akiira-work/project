@@ -162,6 +162,7 @@
   .status-pill { font-size: 0.66rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
   .status-pill.connected { color: var(--good); background: var(--good-bg); }
   .status-pill.planned { color: #8a6200; background: var(--warn-bg); }
+  .status-pill.not-needed { color: var(--ink-muted); background: var(--surface-2); }
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .status-pill.planned { color: var(--warn); } }
 
   /* ---- flow ---- */
@@ -423,12 +424,13 @@
     ).join('');
   }
 
+  const INTEGRATION_STATUS_LABEL = { connected: 'Connected', planned: 'Planned', 'not-needed': 'Not needed' };
   function renderIntegrations(items) {
     document.getElementById('integrations-grid').innerHTML = items.map(i => `
       <div class="card integration-card">
         <div class="integration-top">
           <div class="integration-name">${esc(i.name)}</div>
-          <span class="status-pill ${i.status}">${i.status === 'connected' ? 'Connected' : 'Planned'}</span>
+          <span class="status-pill ${i.status}">${INTEGRATION_STATUS_LABEL[i.status] || i.status}</span>
         </div>
         <div class="integration-role">${esc(i.role)}</div>
       </div>
