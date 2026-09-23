@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-23T23:00:00Z",
+  "updated": "2026-09-24T01:00:00Z",
   "phases": [
     { "key": "Phase 0", "label": "Phase 0", "blurb": "Prove the schema by hand" },
     { "key": "Phase 1", "label": "Phase 1", "blurb": "Run it manually, end to end" },
