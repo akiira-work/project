@@ -6,7 +6,7 @@ GitHub Pages home at `https://akiira-work.github.io/project/` for shareable proj
 
 Path: `nova/tracker/` → live at **https://akiira-work.github.io/project/nova/tracker/**
 
-A single-page tracking dashboard for the **N.O.V.A.** project (Normalize · Organize · Verify · Archive) — the pipeline that consolidates source material from any game, project, or client into structured Obsidian notes. Built for reviewers: objectives, features, flow diagram, the full task tracker, test status, and the open decisions blocking build start.
+A single-page tracking dashboard for the **N.O.V.A.** project (Normalized Output & Verification Architecture) — the "Clean" module of the **S.N.A.P.** intelligence pipeline (Find → Clean → Strategize → Monitor), consolidating source material from any game, project, or client into structured, verified Obsidian notes. Built for reviewers: objectives, features, flow diagram, the full task tracker, test status, and the open decisions blocking build start.
 
 Source of truth is the Obsidian vault at `Documents/Asgard/Asgard/NOVA/`:
 - `NOVA - Project Hub.md`

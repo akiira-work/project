@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-24T21:00:00Z",
+  "updated": "2026-09-25T10:00:00Z",
   "phases": [
     { "key": "Phase 0", "label": "Phase 0", "blurb": "Prove the schema by hand" },
     { "key": "Phase 1", "label": "Phase 1", "blurb": "Run it manually, end to end" },
@@ -31,7 +31,8 @@
     "App version + last-updated date shown in the sidebar footer",
     "Light / Dark / System theme switch",
     "Project Review page — a fixed reviewer packet: summary, before/after, workflow diagram, test results, security, owner",
-    "Ask AI one-click question suggestions, with cached answers so repeat questions cost no new API call"
+    "Ask AI one-click question suggestions, with cached answers so repeat questions cost no new API call",
+    "Realigned under S.N.A.P. as the N.O.V.A. (Clean) module — new terminology, S.N.A.P. Alignment mapping, module-color visual identity"
   ],
   "quickstart": {
     "steps": [
@@ -109,7 +110,8 @@
     { "n": 42, "task": "Inbox shortened further; app version + last-updated shown in sidebar (user-requested, D-040)", "phase": "Phase 2", "status": "done" },
     { "n": 43, "task": "Light/Dark/System theme switch (user-requested, D-041)", "phase": "Phase 2", "status": "done" },
     { "n": 44, "task": "\"Project Review\" page for an external/IT reviewer (user-requested, D-042)", "phase": "Phase 2", "status": "done" },
-    { "n": 45, "task": "Ask AI most-asked-questions with server-side answer caching (user-requested, D-043)", "phase": "Phase 2", "status": "done" }
+    { "n": 45, "task": "Ask AI most-asked-questions with server-side answer caching (user-requested, D-043)", "phase": "Phase 2", "status": "done" },
+    { "n": 46, "task": "Realigned under S.N.A.P. as the N.O.V.A. (Clean) module — terminology + visual identity (user-requested, D-044)", "phase": "Phase 2", "status": "done" }
   ],
   "tests": [
     { "test": "Schema completeness", "validates": "Every field captures what's actually needed", "status": "todo" },
@@ -163,7 +165,8 @@
     { "id": "D-040", "label": "Inbox form fields paired per row, secondary panels collapsed by default, list heights capped; app version/date added to the sidebar" },
     { "id": "D-041", "label": "Light/Dark/System theme switch in the sidebar footer, persisted, no flash-of-wrong-theme on load" },
     { "id": "D-042", "label": "\"Project Review\" page added — summary, before/after, workflow diagram, test results, security info, owner; later extended with Pain Points + a quantified impact table" },
-    { "id": "D-043", "label": "Ask AI gets 8 one-click question chips; answers to the fixed set are cached server-side, keyed to a hash of the project's own context, so repeats cost no new API call" }
+    { "id": "D-043", "label": "Ask AI gets 8 one-click question chips; answers to the fixed set are cached server-side, keyed to a hash of the project's own context, so repeats cost no new API call" },
+    { "id": "D-044", "label": "Realigned as S.N.A.P.'s N.O.V.A. (Clean) module — acronym reinterpreted, honest capability-mapping table added, module-badge annotations, full SNAP color palette adopted; no vault files renamed" }
   ],
   "build_gate": "Phase 1 complete — all 6 source formats have run through the pipeline at least once (CSV/image/text via disposable test fixtures on 2026-09-22, pending a real source of each), dedupe/update-in-place confirmed, and the 7 pilot notes reviewed. Phase 2 (semi-automate) underway: checklist and machine-readable rule table done; a Cowork scheduled task (task #14, optional) is the only thing left."
 }
